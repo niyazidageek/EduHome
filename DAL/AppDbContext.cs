@@ -12,5 +12,7 @@ namespace EduHome.DAL
         }
         public DbSet<Course> Courses { get; set; }
         public DbSet<CourseImage> CourseImage { get; set; }
+        public DbSet<CourseCategory> CourseCategories { get; set; }
+        public DbSet<Category> Categories  { get; set; }
     }
 }

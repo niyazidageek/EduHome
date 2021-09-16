@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using EduHome.Models;
+using Microsoft.AspNetCore.Http;
 
-namespace EduHome.Models
+namespace EduHome.Areas.Admin.ViewModels
 {
-    public class Course:BaseEntity
+    public class CourseAdminVM
     {
         [Required, StringLength(255)]
         public string Name { get; set; }
@@ -34,9 +35,8 @@ namespace EduHome.Models
         [Required]
         public float? Fee { get; set; }
         [Required]
-        public CourseImage CourseImage { get; set; }
-        [DefaultValue(false)]
-        public bool IsDeleted { get; set; }
-        public List<CourseCategory> CourseCategories { get; set; }
+        public IFormFile Photo { get; set; }
+        public List<LanguageVM> Languages { get; set; }
+        public List<CategoryVM> Categories { get; set; }
     }
 }

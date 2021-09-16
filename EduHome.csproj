@@ -23,20 +23,20 @@
     <None Remove="Areas\Admin\ViewModels\" />
     <None Remove="Areas\Admin\Views\" />
     <None Remove="Areas\Admin\Views\Shared\" />
-    <None Remove="Areas\Admin\Views\Home\" />
     <None Remove="Views\About\" />
     <None Remove="ViewComponents\" />
     <None Remove="Views\Shared\Components\" />
-    <None Remove="Helpers\" />
+    <None Remove="Areas\Admin\Helpers\" />
+    <None Remove="Areas\Admin\Views\Category\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
     <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAL\" />
@@ -55,13 +55,13 @@
     <Folder Include="Areas\Admin\ViewModels\" />
     <Folder Include="Areas\Admin\Views\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
-    <Folder Include="Areas\Admin\Views\Home\" />
     <Folder Include="wwwroot\Admin\" />
     <Folder Include="wwwroot\Admin\css\" />
     <Folder Include="Views\About\" />
     <Folder Include="ViewComponents\" />
     <Folder Include="Views\Shared\Components\" />
-    <Folder Include="Helpers\" />
+    <Folder Include="Areas\Admin\Helpers\" />
+    <Folder Include="Areas\Admin\Views\Category\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
