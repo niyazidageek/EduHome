@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EduHome.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210916104303_coursecategoryadded")]
-    partial class coursecategoryadded
+    [Migration("20210917114353_initialmigration")]
+    partial class initialmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,7 +33,7 @@ namespace EduHome.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("EduHome.Models.Course", b =>
@@ -76,7 +76,8 @@ namespace EduHome.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<float>("Fee")
+                    b.Property<float?>("Fee")
+                        .IsRequired()
                         .HasColumnType("real");
 
                     b.Property<bool>("IsDeleted")
@@ -97,10 +98,12 @@ namespace EduHome.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTime?>("StartDate")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("StudentCapacity")
+                    b.Property<int?>("StudentCapacity")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Title")

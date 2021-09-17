@@ -6,6 +6,7 @@ using EduHome.Areas.Admin.Helpers;
 using EduHome.Areas.Admin.ViewModels;
 using EduHome.DAL;
 using EduHome.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,14 +16,17 @@ namespace EduHome.Areas.Admin.Controllers
     public class CourseController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IWebHostEnvironment _env;
 
-        public CourseController(AppDbContext context)
+        public CourseController(AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         public IActionResult Index()
         {
+            //List<Course> Courses = _context.Courses.Include(c => c.CourseImage).ThenInclude(c=>c.)
             return View();
         }
 
@@ -49,6 +53,7 @@ namespace EduHome.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateCourse(CourseAdminVM courseAdminVM)
         {
+           
             CourseAdminVM ca = new CourseAdminVM();
             ca.Languages = new List<LanguageVM>();
             ca.Categories = new List<CategoryVM>();
@@ -69,6 +74,22 @@ namespace EduHome.Areas.Admin.Controllers
                 return View(ca);
             }
 
+            var photo = courseAdminVM.Photo;
+
+            if (!FileHelper.CheckContent(photo.ContentType, "image/"))
+            {
+                ModelState.AddModelError("Photo", "Please select image format");
+                return View(courseAdminVM);
+            }
+
+            if (!FileHelper.CheckLength(photo.Length, 200))
+            {
+                ModelState.AddModelError("Photo", "Image size must be less than 200kb");
+                return View(courseAdminVM);
+            }
+
+            FileHelper.CreateFile(photo.FileName, _env.WebRootPath, "img", photo);
+
             Course course = new Course
             {
                 Name = courseAdminVM.Name,
@@ -83,22 +104,22 @@ namespace EduHome.Areas.Admin.Controllers
                 Language = courseAdminVM.Language,
                 StudentCapacity = courseAdminVM.StudentCapacity,
                 Assesment = courseAdminVM.Assesment,
-                Fee = courseAdminVM.Fee
+                Fee = courseAdminVM.Fee,
+                CourseImage = new CourseImage { Photo = FileHelper.UniqueFileName }
             };
 
             _context.Courses.Add(course);
 
-            foreach (var categoryInput in courseAdminVM.Categories)
-            {
-                Category category = Categories.Find(c=>c.Name == categoryInput.Name);
-                CourseCategory courseCategory = new CourseCategory
-                {
-                    Course = course,
-                    Category = category
-                };
-                _context.CourseCategories.Add(courseCategory);
-            }
+            _context.SaveChanges();
 
+            foreach (var categoryInput in courseAdminVM.CategoriesInput)
+            {
+                Category category = Categories.Find(c => c.Name == categoryInput);
+                CourseCategory courseCategory = new CourseCategory { CategoryId = category.Id, CourseId = course.Id };
+                _context.CourseCategories.Add(courseCategory);
+                _context.SaveChanges();
+            }
+           
             return RedirectToAction(nameof(Index));
         }
     }

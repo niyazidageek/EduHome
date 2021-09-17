@@ -34,9 +34,9 @@ namespace EduHome.Areas.Admin.ViewModels
         public string Assesment { get; set; }
         [Required]
         public float? Fee { get; set; }
-        [Required]
         public IFormFile Photo { get; set; }
         public List<LanguageVM> Languages { get; set; }
         public List<CategoryVM> Categories { get; set; }
+        public List<string> CategoriesInput { get; set; }
     }
 }

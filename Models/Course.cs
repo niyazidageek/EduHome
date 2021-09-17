@@ -37,6 +37,6 @@ namespace EduHome.Models
         public CourseImage CourseImage { get; set; }
         [DefaultValue(false)]
         public bool IsDeleted { get; set; }
-        public List<CourseCategory> CourseCategories { get; set; }
+        public IList<CourseCategory> CourseCategories { get; set; }
     }
 }
