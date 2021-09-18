@@ -4,14 +4,16 @@ using EduHome.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EduHome.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210918124554_courseimageadded1")]
+    partial class courseimageadded1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,9 +27,6 @@ namespace EduHome.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -63,6 +62,9 @@ namespace EduHome.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<int?>("CourseImageId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -111,6 +113,8 @@ namespace EduHome.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CourseImageId");
+
                     b.ToTable("Courses");
                 });
 
@@ -143,9 +147,6 @@ namespace EduHome.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Photo")
                         .IsRequired()
                         .HasMaxLength(255)
@@ -153,10 +154,16 @@ namespace EduHome.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseId")
-                        .IsUnique();
-
                     b.ToTable("CourseImage");
+                });
+
+            modelBuilder.Entity("EduHome.Models.Course", b =>
+                {
+                    b.HasOne("EduHome.Models.CourseImage", "CourseImage")
+                        .WithMany()
+                        .HasForeignKey("CourseImageId");
+
+                    b.Navigation("CourseImage");
                 });
 
             modelBuilder.Entity("EduHome.Models.CourseCategory", b =>
@@ -178,17 +185,6 @@ namespace EduHome.Migrations
                     b.Navigation("Course");
                 });
 
-            modelBuilder.Entity("EduHome.Models.CourseImage", b =>
-                {
-                    b.HasOne("EduHome.Models.Course", "Course")
-                        .WithOne("CourseImage")
-                        .HasForeignKey("EduHome.Models.CourseImage", "CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Course");
-                });
-
             modelBuilder.Entity("EduHome.Models.Category", b =>
                 {
                     b.Navigation("CourseCategories");
@@ -197,9 +193,6 @@ namespace EduHome.Migrations
             modelBuilder.Entity("EduHome.Models.Course", b =>
                 {
                     b.Navigation("CourseCategories");
-
-                    b.Navigation("CourseImage")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

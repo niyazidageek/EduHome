@@ -1,0 +1,22 @@
+﻿@model Category
+
+<div class="row justify-content-center">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Edit category</h4>
+                <form enctype="multipart/form-data" class="forms-sample" method="post">
+                    <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+                    <input hidden asp-for="Id" value="@Model.Id" />
+                    <div class="form-group">
+                        <label asp-for="Name">Name</label>
+                        <input asp-for="Name" class="form-control" value="@Model.Name" placeholder="Name">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button asp-action="Index" class="btn btn-light">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

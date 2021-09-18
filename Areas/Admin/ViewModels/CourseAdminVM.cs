@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using EduHome.Models;
 using Microsoft.AspNetCore.Http;
+using System.Linq;
 
 namespace EduHome.Areas.Admin.ViewModels
 {
@@ -38,5 +39,7 @@ namespace EduHome.Areas.Admin.ViewModels
         public List<LanguageVM> Languages { get; set; }
         public List<CategoryVM> Categories { get; set; }
         public List<string> CategoriesInput { get; set; }
+        public Course Course { get; set; }
+        public int CourseId { get; set; }
     }
 }

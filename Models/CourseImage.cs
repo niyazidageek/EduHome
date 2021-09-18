@@ -7,5 +7,7 @@ namespace EduHome.Models
     {
         [Required, StringLength(255)]
         public string Photo { get; set; }
+        public int CourseId { get; set; }
+        public Course Course { get; set; }
     }
 }

@@ -22,14 +22,8 @@ namespace EduHome.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<Category> Categories = await _context.Categories.ToListAsync();
-            CategoryVM categoryVM = new CategoryVM();
-            categoryVM.Names = new List<string>();
-            foreach (var category in Categories)
-            {
-                categoryVM.Names.Add(category.Name);
-            }
-            return View(categoryVM);
+            List<Category> Categories = await _context.Categories.Where(c=>c.IsDeleted==false).ToListAsync();      
+            return View(Categories);
         }
 
         public IActionResult CreateCategory()
@@ -42,7 +36,7 @@ namespace EduHome.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid) return View(categoryVM);
 
-            List<Category> Categories = await _context.Categories.ToListAsync();
+            List<Category> Categories = await _context.Categories.Where(c=>c.IsDeleted==false).ToListAsync();
 
             bool categoryExists = Categories.Exists(c => c.Name == categoryVM.Name);
 
@@ -52,12 +46,46 @@ namespace EduHome.Areas.Admin.Controllers
                 return View(categoryVM);
             }
 
-            Category category = new Category { Name = categoryVM.Name };
+            Category category = new Category { Name = categoryVM.Name, IsDeleted=false };
 
             _context.Categories.Add(category);
 
             await _context.SaveChangesAsync();
 
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            var category = await _context.Categories.Where(c=>c.IsDeleted==false).FirstOrDefaultAsync(c => c.Id == id);
+            if (category == null) return NotFound();
+            category.IsDeleted = true;
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> EditCategory(int id)
+        {
+            var category = await _context.Categories.Where(c=>c.IsDeleted==false).FirstOrDefaultAsync(c => c.Id == id);
+            if (category == null) return NotFound();
+            return View(category);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditCategory(Category category)
+        {
+            if (!ModelState.IsValid) return View(category);
+            var existingCategory = await _context.Categories.Where(c=>c.IsDeleted==false).FirstOrDefaultAsync(c => c.Id == category.Id);
+            if (category == null) return NotFound();
+            var categoryExists = await _context.Categories.FirstOrDefaultAsync(c => c.Name == category.Name);
+
+            if (categoryExists!=null)
+            {
+                ModelState.AddModelError("", "Category already exists");
+                return View(category);
+            }
+            existingCategory.Name = category.Name;
+            _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
     }

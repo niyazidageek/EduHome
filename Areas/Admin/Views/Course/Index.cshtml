@@ -1,35 +1,47 @@
-﻿<a asp-controller="Course" asp-action="CreateCourse" class="btn btn-success">Create</a>
+﻿@model List<EduHome.Models.Course>
+<a asp-controller="Course" asp-action="CreateCourse" class="btn btn-success">Create</a>
 <table class="table table-dark">
     <thead>
         <tr>
             <th> Name </th>
-            <th> Title </th>
-            <th> Description </th>
-            <th> Application rules </th>
-            <th> Certification </th>
-            <th> Start date </th>
-            <th> Duration </th>
-            <th> Class duration </th>
-            <th> Skill level </th>
-            <th> Language </th>
-            <th> Student Capacity </th>
-            <th> Assesment </th>
-            <th> Fee </th>
+            <th> Categories </th>
             <th> Photo </th>
+            <th> Delete </th>
+            <th> Edit </th>
+            <th> Details </th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td> 1 </td>
-            <td> Herman Beck </td>
-            <td> $ 77.99 </td>
-            <td> May 15, 2015 </td>
-        </tr>
-        <tr>
-            <td> 2 </td>
-            <td> Messsy Adam </td>
-            <td> $245.30 </td>
-            <td> July 1, 2015 </td>
-        </tr>
+        @foreach (var course in Model)
+        {
+            List<string> categories = new List<string>();
+            foreach (var category in course.CourseCategories)
+            {
+                categories.Add(category.Category.Name);
+            }
+            <tr>
+                <td> @course.Name </td>
+                <td> @String.Join(", ", categories.ToArray()) </td>
+                <td> <img src="~/img/@course.CourseImage.Photo" /> </td>
+                <td> <a asp-action="DeleteCourse" asp-route-id="@course.Id" class="btn btn-danger"> Delete </a> </td>
+                <td> <a asp-action="EditCourse" asp-route-id="@course.Id" class="btn btn-primary"> Edit </a> </td>
+                <td> <a class="btn btn-info"> Details </a> </td>
+                @*<td> @course.Name </td>
+                <td> @course.Title </td>
+                <td> @course.Description </td>
+                <td> @course.ApplicationRule </td>
+                <td> @course.Certification </td>
+                <td> @course.StartDate?.ToString("dd/MMMM/yyyy") </td>
+                <td> @course.Duration </td>
+                <td> @course.ClassDuration </td>
+                <td> @course.SkillLevel </td>
+                <td> @course.Language </td>
+                <td> @course.StudentCapacity.ToString() </td>
+                <td> @course.Assesment </td>
+                <td> @course.Fee </td>
+                <td> <img src="~/img/@course.CourseImage.Photo" /> </td>
+                <td> @String.Join(", ", categories.ToArray()) </td>*@           
+            </tr>
+        }
     </tbody>
 </table>

@@ -1,4 +1,5 @@
 ﻿@model CourseAdminVM
+
 <div class="row justify-content-center">
     <div class="col-md-6 grid-margin stretch-card">
         <div class="card">
@@ -7,76 +8,86 @@
                 <form enctype="multipart/form-data" class="forms-sample" method="post">
                     <div class="form-group">
                         <label asp-for="Name">Name</label>
-                        <input asp-for="Name" class="form-control" placeholder="Name">
+                        <input asp-for="Name" class="form-control" placeholder="Name" value="@Model.Course.Name">
                         <span class="text-danger" asp-validation-for="Name"></span>
                     </div>
+                    <input hidden asp-for="CourseId" value="@Model.Course.Id" />
+                    <input hidden asp-for="Course" value="@Model.Course" />
                     <div class="form-group">
                         <label asp-for="Title">Title</label>
-                        <input asp-for="Title" class="form-control" placeholder="Title">
+                        <input asp-for="Title" class="form-control" placeholder="Title" value="@Model.Course.Title">
                         <span class="text-danger" asp-validation-for="Title"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Description">Description</label>
-                        <input asp-for="Description" class="form-control" placeholder="Description">
+                        <input asp-for="Description" class="form-control" placeholder="Description" value="@Model.Course.Description">
                         <span class="text-danger" asp-validation-for="Description"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="ApplicationRule">Application Rules</label>
-                        <input asp-for="ApplicationRule" class="form-control" placeholder="Application Rules">
+                        <input asp-for="ApplicationRule" class="form-control" placeholder="Application Rules" value="@Model.Course.ApplicationRule">
                         <span class="text-danger" asp-validation-for="ApplicationRule"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Certification">Certification</label>
-                        <input asp-for="Certification" class="form-control" placeholder="Certification">
+                        <input asp-for="Certification" class="form-control" placeholder="Certification" value="@Model.Course.Certification">
                         <span class="text-danger" asp-validation-for="Certification"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="StartDate">Start Date</label>
-                        <input asp-for="StartDate" class="form-control" placeholder="Start Date">
+                        <input asp-for="StartDate" class="form-control"/>
                         <span class="text-danger" asp-validation-for="StartDate"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Duration">Duration</label>
-                        <input asp-for="Duration" class="form-control" placeholder="Duration">
+                        <input asp-for="Duration" class="form-control" placeholder="Duration" value="@Model.Course.Duration">
                         <span class="text-danger" asp-validation-for="Duration"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="ClassDuration">Class Duration</label>
-                        <input asp-for="ClassDuration" class="form-control" placeholder="Class Duration">
+                        <input asp-for="ClassDuration" class="form-control" placeholder="Class Duration" value="@Model.Course.ClassDuration">
                         <span class="text-danger" asp-validation-for="ClassDuration"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="SkillLevel">Skill Level</label>
-                        <input asp-for="SkillLevel" class="form-control" placeholder="Skill Level">
+                        <input asp-for="SkillLevel" class="form-control" placeholder="Skill Level" value="@Model.Course.SkillLevel">
                         <span class="text-danger" asp-validation-for="SkillLevel"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="StudentCapacity">Student Capacity</label>
-                        <input asp-for="StudentCapacity" class="form-control" placeholder="Student Capacity">
+                        <input asp-for="StudentCapacity" class="form-control" placeholder="Student Capacity" value="@Model.Course.StudentCapacity">
                         <span class="text-danger" asp-validation-for="StudentCapacity"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Assesment">Assesment</label>
-                        <input asp-for="Assesment" class="form-control" placeholder="Assesment">
+                        <input asp-for="Assesment" class="form-control" placeholder="Assesment" value="@Model.Course.Assesment">
                         <span class="text-danger" asp-validation-for="Assesment"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Fee">Fee</label>
-                        <input asp-for="Fee" class="form-control" placeholder="Fee">
+                        <input asp-for="Fee" class="form-control" placeholder="Fee" value="@Model.Course.Fee">
                         <span class="text-danger" asp-validation-for="Fee"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Photo">Photo</label>
-                        <input asp-for="Photo" class="form-control" accept="image/*" placeholder="Photo">
-                        <span class="text-danger" asp-validation-for="Photo"></span>
+                        <img width="400px" src="~/img/@Model.Course.CourseImage.Photo" id="blah" />
+                        <input asp-for="Photo" class="form-control" accept="image/*" placeholder="Photo" id="imgInp">
+                        <a class="btn btn-danger">Delete</a>
                     </div>
                     <div class="form-group">
-                        <select class="selectpicker" asp-for="Language" asp-items="@(new SelectList(Model.Languages,"Name","Name"))"></select>
+                        <select class="selectpicker" asp-for="Language" asp-items="@(new SelectList(Model.Languages.Where(l=>l.Name!=Model.Course.Language),"Name","Name"))">
+                            <option selected value="@Model.Course.Language">@Model.Course.Language</option>
+                        </select>
                         <label class="form-label select-label">Choose a language</label>
                         <span class="text-danger" asp-validation-for="Language"></span>
                     </div>
                     <div class="form-group">
-                        <select class="selectpicker" asp-for="CategoriesInput" asp-items="@(new SelectList(Model.Categories,"Name","Name"))"></select>
+                        <select class="selectpicker" asp-for="CategoriesInput" asp-items="@(new SelectList(ViewBag.Categories,"Name","Name"))">
+                            @foreach (var option in Model.Course.CourseCategories)
+                            {
+                                <option selected value="@option.Category.Name">@option.Category.Name</option>
+                            }
+                        </select>
                         <label class="form-label select-label">Choose a category</label>
                         <span class="text-danger" asp-validation-for="CategoriesInput"></span>
                     </div>
@@ -87,3 +98,11 @@
         </div>
     </div>
 </div>
+<script>
+    imgInp.onchange = evt => {
+  const [file] = imgInp.files
+  if (file) {
+    blah.src = URL.createObjectURL(file)
+  }
+}
+</script>

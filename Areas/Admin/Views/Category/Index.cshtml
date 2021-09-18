@@ -1,17 +1,23 @@
-﻿@model CategoryVM
+﻿@model List<Category>
 
 <a asp-controller="Category" asp-action="CreateCategory" class="btn btn-success">Create</a>
 <table class="table table-dark">
     <thead>
-        <tr>         
+        <tr>
             <th> Category name</th>
+            <th> Delete </th>
+            <th> Edit </th>
+            <th> Details </th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var category in Model.Names)
+        @foreach (var category in Model)
         {
             <tr>
-                <td> @category </td>               
+                <td> @category.Name </td>
+                <td> <a asp-action="DeleteCategory" asp-route-id="@category.Id" class="btn btn-danger"> Delete </a> </td>
+                <td> <a asp-action="EditCategory" asp-route-id="@category.Id" class="btn btn-primary"> Edit </a> </td>
+                <td> <a class="btn btn-info"> Details </a> </td>
             </tr>
         }
     </tbody>

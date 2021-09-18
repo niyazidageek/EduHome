@@ -26,8 +26,12 @@ namespace EduHome.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            //List<Course> Courses = _context.Courses.Include(c => c.CourseImage).ThenInclude(c=>c.)
-            return View();
+            List<Course> Courses = _context.Courses.Where(c=>c.IsDeleted==false)
+                .Include(c => c.CourseImage)
+                .Include(c => c.CourseCategories)
+                .ThenInclude(c => c.Category)
+                .ToList();
+            return View(Courses);
         }
 
         public async Task<IActionResult> CreateCourse()
@@ -35,7 +39,7 @@ namespace EduHome.Areas.Admin.Controllers
             CourseAdminVM ca = new CourseAdminVM();
             ca.Languages = new List<LanguageVM>();
             ca.Categories = new List<CategoryVM>();
-            List<Category> Categories = await _context.Categories.ToListAsync();
+            List<Category> Categories = await _context.Categories.Where(c=>c.IsDeleted==false).ToListAsync();
 
             foreach (var language in Enum.GetValues(typeof(Languages)))
             {
@@ -57,7 +61,7 @@ namespace EduHome.Areas.Admin.Controllers
             CourseAdminVM ca = new CourseAdminVM();
             ca.Languages = new List<LanguageVM>();
             ca.Categories = new List<CategoryVM>();
-            List<Category> Categories = await _context.Categories.ToListAsync();
+            List<Category> Categories = await _context.Categories.Where(c=>c.IsDeleted == false).ToListAsync();
 
             foreach (var language in Enum.GetValues(typeof(Languages)))
             {
@@ -120,6 +124,173 @@ namespace EduHome.Areas.Admin.Controllers
                 _context.SaveChanges();
             }
            
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> DeleteCourse(int id)
+        {
+            var course = await _context.Courses.FindAsync(id);
+            if (course == null) return NotFound();
+            course.IsDeleted = true;
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> EditCourse(int id)
+        {
+            var course = await _context.Courses.Where(c=>c.IsDeleted==false)
+                .Include(c=>c.CourseImage)
+                .Include(c=>c.CourseCategories)
+                .ThenInclude(c=>c.Category)
+                .FirstOrDefaultAsync(c=>c.Id == id);
+
+            if (course == null) return NotFound();
+
+            CourseAdminVM ca = new CourseAdminVM();
+            ca.Languages = new List<LanguageVM>();
+            ca.Categories = new List<CategoryVM>();
+            ca.Course = course;
+            ca.StartDate = course.StartDate;
+            List<Category> Categories = await _context.Categories.Where(c=>c.IsDeleted == false).ToListAsync();
+
+            foreach (var language in Enum.GetValues(typeof(Languages)))
+            {
+                ca.Languages.Add(new LanguageVM { Name = language.ToString() });
+            }
+
+            foreach (var category in Categories)
+            {
+                ca.Categories.Add(new CategoryVM { Name = category.Name });
+            }
+
+            List<CategoryVM> existingCategories = new List<CategoryVM>();
+            foreach (var category in course.CourseCategories)
+            {
+                CategoryVM categoryVM = new CategoryVM { Name = category.Category.Name };
+                existingCategories.Add(categoryVM);
+            }
+
+            var filteredList = new List<CategoryVM>();
+            foreach (var item in ca.Categories.ToList())
+            {
+                if (existingCategories.FirstOrDefault(c => c.Name == item.Name) != null)
+                {
+                    ca.Categories.Remove(item);
+                }
+            }
+            filteredList = ca.Categories;
+
+            ViewBag.Categories = filteredList;
+
+            return View(ca);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditCourse(CourseAdminVM courseAdminVM)
+        {
+
+            CourseAdminVM ca = new CourseAdminVM();
+            ca.Languages = new List<LanguageVM>();
+            ca.Categories = new List<CategoryVM>();
+            List<Category> Categories = await _context.Categories.Where(c=>c.IsDeleted == false).ToListAsync();
+
+            foreach (var language in Enum.GetValues(typeof(Languages)))
+            {
+                ca.Languages.Add(new LanguageVM { Name = language.ToString() });
+            }
+
+            foreach (var category in Categories)
+            {
+                ca.Categories.Add(new CategoryVM { Name = category.Name });
+            }
+
+            var course = await _context.Courses.Where(c => c.IsDeleted == false)
+                .Include(c => c.CourseImage)
+                .Include(c => c.CourseCategories)
+                .ThenInclude(c => c.Category)
+                .FirstOrDefaultAsync(c => c.Id == courseAdminVM.CourseId);
+            if (course == null) return NotFound();
+            ca.Course = course;
+            List<CategoryVM> existingCategories = new List<CategoryVM>();
+            foreach (var category in course.CourseCategories)
+            {
+                CategoryVM categoryVM = new CategoryVM { Name = category.Category.Name };
+                existingCategories.Add(categoryVM);
+            }
+
+            var filteredList = new List<CategoryVM>();
+            foreach (var item in ca.Categories.ToList())
+            {
+                if (existingCategories.FirstOrDefault(c => c.Name == item.Name) != null)
+                {
+                    ca.Categories.Remove(item);
+                }
+            }
+            filteredList = ca.Categories;
+
+            ViewBag.Categories = filteredList;
+
+            
+
+            
+
+            if (!ModelState.IsValid) return View(ca);
+            
+            var existingImage = await _context.CourseImage.FirstOrDefaultAsync(ci=>ci.CourseId==course.Id);
+            if (existingImage == null) return NotFound();
+
+            var photo = courseAdminVM.Photo;
+
+            if (photo != null)
+            {
+                if (!FileHelper.CheckContent(photo.ContentType, "image/"))
+                {
+                    ModelState.AddModelError("Photo", "Please select image format");
+                    return View(courseAdminVM);
+                }
+
+                if (!FileHelper.CheckLength(photo.Length, 200))
+                {
+                    ModelState.AddModelError("Photo", "Image size must be less than 200kb");
+                    return View(courseAdminVM);
+                }
+
+                FileHelper.DeleteFile(existingImage.Photo, _env.WebRootPath, "img");
+                FileHelper.CreateFile(courseAdminVM.Photo.FileName, _env.WebRootPath, "img", courseAdminVM.Photo);
+                existingImage.Photo = FileHelper.UniqueFileName;
+            }
+
+            
+
+            var existingCourseCategories = await _context.CourseCategories.Select(x=>x).Where(c=>c.CourseId == course.Id).ToListAsync();
+            foreach (var coursecategory in existingCourseCategories)
+            {
+                _context.CourseCategories.Remove(coursecategory);
+            }
+
+            foreach (var categoryInput in courseAdminVM.CategoriesInput)
+            {
+                Category category = Categories.Find(c => c.Name == categoryInput);
+                CourseCategory courseCategory = new CourseCategory { CategoryId = category.Id, CourseId = course.Id };
+                _context.CourseCategories.Add(courseCategory);
+            }
+
+            course.Name = courseAdminVM.Name;
+            course.Title = courseAdminVM.Title;
+            course.Description = courseAdminVM.Description;
+            course.Certification = courseAdminVM.Certification;
+            course.ApplicationRule = courseAdminVM.ApplicationRule;
+            course.Assesment = courseAdminVM.Assesment;
+            course.ClassDuration = courseAdminVM.ClassDuration;
+            course.Duration = courseAdminVM.Duration;
+            course.StartDate = courseAdminVM.StartDate;
+            course.SkillLevel = courseAdminVM.SkillLevel;
+            course.Language = courseAdminVM.Language;
+            course.StudentCapacity = courseAdminVM.StudentCapacity;
+            course.Fee = courseAdminVM.Fee;
+
+            _context.SaveChanges();
+
             return RedirectToAction(nameof(Index));
         }
     }
