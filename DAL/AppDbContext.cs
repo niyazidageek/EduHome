@@ -14,5 +14,6 @@ namespace EduHome.DAL
         public DbSet<CourseImage> CourseImage { get; set; }
         public DbSet<CourseCategory> CourseCategories { get; set; }
         public DbSet<Category> Categories  { get; set; }
+        public DbSet<NoticeBoardItem> NoticeBoardItems { get; set; }
     }
 }

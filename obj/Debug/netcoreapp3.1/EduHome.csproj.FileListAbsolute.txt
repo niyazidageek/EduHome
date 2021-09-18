@@ -85,3 +85,6 @@
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Course/EditCourse.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/EduHome.csproj.AssemblyReference.cache
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Category/EditCategory.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/NoticeBoard/CreateNoticeBoardItem.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/NoticeBoard/Index.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/NoticeBoard/EditNoticeBoardItem.cshtml.g.cs
