@@ -29,6 +29,7 @@
     <None Remove="Areas\Admin\Helpers\" />
     <None Remove="Areas\Admin\Views\Category\" />
     <None Remove="Areas\Admin\Views\NoticeBoard\" />
+    <None Remove="Areas\Admin\Views\Speaker\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
@@ -64,6 +65,7 @@
     <Folder Include="Areas\Admin\Helpers\" />
     <Folder Include="Areas\Admin\Views\Category\" />
     <Folder Include="Areas\Admin\Views\NoticeBoard\" />
+    <Folder Include="Areas\Admin\Views\Speaker\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

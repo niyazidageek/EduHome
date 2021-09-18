@@ -10,5 +10,6 @@ namespace EduHome.Models
         public string Name { get; set; }
         public bool IsDeleted { get; set; }
         public IList<CourseCategory> CourseCategories { get; set; }
+        public IList<EventCategory> EventCategories { get; set; }
     }
 }

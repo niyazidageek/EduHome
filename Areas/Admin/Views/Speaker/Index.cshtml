@@ -1,0 +1,30 @@
+﻿@model List<Speaker>
+
+<a asp-controller="Speaker" asp-action="CreateSpeaker" class="btn btn-success">Create</a>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th> Id </th>
+            <th> Name </th>
+            <th> Position </th>
+            <th> Photo </th>
+            <th> Delete </th>
+            <th> Edit </th>
+            <th> Details </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var speaker in Model)
+        {
+            <tr>
+                <td> @speaker.Id </td>
+                <td> @speaker.Name </td>
+                <td> @speaker.Position </td>
+                <td> <img src="~/img/@speaker.SpeakerImage.Photo" /> </td>
+                <td> <a asp-action="DeleteSpeaker" asp-route-id="@speaker.Id" class="btn btn-danger"> Delete </a> </td>
+                <td> <a asp-action="EditSpeaker" asp-route-id="@speaker.Id" class="btn btn-primary"> Edit </a> </td>
+                <td> <a class="btn btn-info"> Details </a> </td>
+            </tr>
+        }
+    </tbody>
+</table>
