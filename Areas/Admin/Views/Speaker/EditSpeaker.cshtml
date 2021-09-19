@@ -6,19 +6,20 @@
             <div class="card-body">
                 <h4 class="card-title">Create course</h4>
                 <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <input hidden asp-for="SpeakerId" value="@Model.SpeakerId" />
                     <div class="form-group">
                         <label asp-for="Name">Name</label>
-                        <input asp-for="Name" class="form-control" placeholder="Name">
+                        <input asp-for="Name" class="form-control" placeholder="Name" value="@Model.Name">
                         <span class="text-danger" asp-validation-for="Name"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Position">Position</label>
-                        <input asp-for="Position" class="form-control" placeholder="Position">
+                        <input asp-for="Position" class="form-control" placeholder="Position" value="@Model.Position">
                         <span class="text-danger" asp-validation-for="Position"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Photo">Position</label>
-                        <img width="200px" src="" id="blah" />
+                        <img width="200px" src="~/img/@Model.Image" id="blah" />
                         <input asp-for="Photo" class="form-control" accept="image/*" placeholder="Photo" id="imgInp">
                         <span class="text-danger" asp-validation-for="Photo"></span>
                     </div>

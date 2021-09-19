@@ -42,6 +42,12 @@ namespace EduHome.Areas.Admin.Controllers
 
             var photo = speakerVM.Photo;
 
+            if (photo == null)
+            {
+                ModelState.AddModelError("Photo", "Photo can not be empty");
+                return View(speakerVM);
+            }
+
             if (!FileHelper.CheckContent(photo.ContentType, "image/"))
             {
                 ModelState.AddModelError("Photo", "Please select image format");
@@ -64,6 +70,66 @@ namespace EduHome.Areas.Admin.Controllers
             };
 
             _context.Speakers.Add(speaker);
+
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> DeleteSpeaker(int id)
+        {
+            var speaker = await _context.Speakers.Where(s=>s.IsDeleted==false).FirstOrDefaultAsync(s => s.Id == id);
+            if (speaker == null) return NotFound();
+            speaker.IsDeleted = true;
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> EditSpeaker(int id)
+        {
+            var speaker = await _context.Speakers.Where(s => s.IsDeleted == false).Include(s=>s.SpeakerImage).FirstOrDefaultAsync(s => s.Id == id);
+            if (speaker == null) return NotFound();
+            SpeakerVM speakerVM = new SpeakerVM
+            {
+                Name = speaker.Name,
+                Position = speaker.Position,
+                Image = speaker.SpeakerImage.Photo,
+                SpeakerId = speaker.Id
+            };
+            return View(speakerVM);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditSpeaker(SpeakerVM speakerVM)
+        {
+            if (!ModelState.IsValid) return View(speakerVM);
+            var speaker = await _context.Speakers.Where(s => s.IsDeleted == false).Include(s => s.SpeakerImage).FirstOrDefaultAsync(s => s.Id == speakerVM.SpeakerId);
+            if (speaker == null) return NotFound();
+
+            var photo = speakerVM.Photo;
+
+            if (photo != null)
+            {
+                if (!FileHelper.CheckContent(photo.ContentType, "image/"))
+                {
+                    ModelState.AddModelError("Photo", "Please select image format");
+                    return View(speakerVM);
+                }
+
+                if (!FileHelper.CheckLength(photo.Length, 200))
+                {
+                    ModelState.AddModelError("Photo", "Image size must be less than 200kb");
+                    return View(speakerVM);
+                }
+
+                FileHelper.DeleteFile(speaker.SpeakerImage.Photo, _env.WebRootPath, "img");
+                FileHelper.CreateFile(speakerVM.Photo.FileName, _env.WebRootPath, "img", speakerVM.Photo);
+                speaker.SpeakerImage.Photo = FileHelper.UniqueFileName;
+
+            }
+            speaker.Name = speakerVM.Name;
+            speaker.Position = speakerVM.Position;
+            _context.SaveChanges();
 
             return RedirectToAction(nameof(Index));
         }
