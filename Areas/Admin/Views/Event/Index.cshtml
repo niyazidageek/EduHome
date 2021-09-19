@@ -1,0 +1,44 @@
+﻿@model List<Event>
+
+<a asp-controller="Event" asp-action="CreateEvent" class="btn btn-success">Create</a>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th> Id </th>
+            <th> Event name</th>
+            <th> Categories </th>
+            <th> Speakers </th>
+            <th> Photo </th>
+            <th> Delete </th>
+            <th> Edit </th>
+            <th> Details </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var _event in Model)
+        {
+            List<string> categories = new List<string>();
+            foreach (var category in _event.EventCategories)
+            {
+                categories.Add(category.Category.Name);
+            }
+
+            List<string> speakers = new List<string>();
+            foreach (var speaker in _event.SpeakerEvents)
+            {
+                speakers.Add(speaker.Speaker.Name);
+            }
+
+            <tr>
+                <td> @_event.Id </td>
+                <td> @_event.Name </td>
+                <td> @String.Join(", ", categories.ToArray()) </td>
+                <td> @String.Join(", ", speakers.ToArray()) </td>
+                <td> <img src="~/img/@_event.EventImage.Photo" /> </td>
+                <td> <a asp-action="DeleteEvent" asp-route-id="@_event.Id" class="btn btn-danger"> Delete </a> </td>
+                <td> <a asp-action="EditEvent" asp-route-id="@_event.Id" class="btn btn-primary"> Edit </a> </td>
+                <td> <a class="btn btn-info"> Details </a> </td>
+            </tr>
+        }
+    </tbody>
+</table>

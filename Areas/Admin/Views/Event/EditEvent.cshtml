@@ -1,0 +1,75 @@
+﻿@model EventVM
+
+<div class="row justify-content-center">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create course</h4>
+                <form enctype="multipart/form-data" class="forms-sample" method="post">
+                    <input hidden asp-for="EventId" value="@Model.Event.Id" />
+                    <div class="form-group">
+                        <label asp-for="Name">Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="Name" value="@Model.Event.Name">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Venue">Venue</label>
+                        <input asp-for="Venue" class="form-control" placeholder="Venue" value="@Model.Event.Venue">
+                        <span class="text-danger" asp-validation-for="Venue"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description">Description</label>
+                        <input asp-for="Description" class="form-control" placeholder="Description" value="@Model.Event.Description">
+                        <span class="text-danger" asp-validation-for="Description"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StartTime">Start Date</label>
+                        <input asp-for="StartTime" class="form-control" placeholder="Start Time">
+                        <span class="text-danger" asp-validation-for="StartTime"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EndTime">Start Date</label>
+                        <input asp-for="EndTime" class="form-control" placeholder="End Time">
+                        <span class="text-danger" asp-validation-for="EndTime"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Photo">Photo</label>
+                        <img width="400px" src="~/img/@Model.Event.EventImage.Photo" id="blah" />
+                        <input asp-for="Photo" class="form-control" accept="image/*" placeholder="Photo" id="imgInp">
+                        <span class="text-danger" asp-validation-for="Photo"></span>
+                    </div>
+                    <div class="form-group">
+                        <select class="selectpicker" asp-for="SpeakersInput" asp-items="@(new SelectList(ViewBag.Speakers,"Name","Name"))">
+                            @foreach (var option in Model.Event.SpeakerEvents)
+                            {
+                                <option selected value="@option.Speaker.Name"> @option.Speaker.Name </option>
+                            }
+                        </select>
+                        <label class="form-label select-label">Choose spekaers</label>
+                        <span class="text-danger" asp-validation-for="SpeakersInput"></span>
+                    </div>
+                    <div class="form-group">
+                        <select class="selectpicker" asp-for="CategoriesInput" asp-items="@(new SelectList(ViewBag.Categories,"Name","Name"))">
+                            @foreach (var option in Model.Event.EventCategories)
+                            {
+                                <option selected value="@option.Category.Name"> @option.Category.Name </option>
+                            }
+                        </select>
+                        <label class="form-label select-label">Choose categories</label>
+                        <span class="text-danger" asp-validation-for="CategoriesInput"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button asp-action="Index" class="btn btn-light">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    imgInp.onchange = evt => {
+  const [file] = imgInp.files
+  if (file) {
+    blah.src = URL.createObjectURL(file)
+  }
+}
+</script>

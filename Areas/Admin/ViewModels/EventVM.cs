@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using EduHome.Models;
+using Microsoft.AspNetCore.Http;
 
-namespace EduHome.Models
+namespace EduHome.Areas.Admin.ViewModels
 {
-    public class Event:BaseEntity
+    public class EventVM
     {
+        public List<CategoryVM> Categories { get; set; }
+        public List<SpeakerVM> Speakers { get; set; }
         [Required, StringLength(50)]
         public string Name { get; set; }
         [Required]
@@ -16,9 +20,10 @@ namespace EduHome.Models
         public string Venue { get; set; }
         [Required, StringLength(500)]
         public string Description { get; set; }
-        public IList<SpeakerEvent> SpeakerEvents { get; set; }
-        public IList<EventCategory> EventCategories { get; set; }
-        public EventImage EventImage { get; set; }
-        public bool IsDeleted { get; set; }
+        public IFormFile Photo { get; set; }
+        public List<string> CategoriesInput { get; set; }
+        public List<string> SpeakersInput { get; set; }
+        public int EventId { get; set; }
+        public Event Event { get; set; }
     }
 }

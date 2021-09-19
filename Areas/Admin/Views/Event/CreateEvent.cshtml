@@ -1,0 +1,55 @@
+﻿@model EventVM
+
+<div class="row justify-content-center">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create course</h4>
+                <form enctype="multipart/form-data" class="forms-sample" method="post">
+                    <div class="form-group">
+                        <label asp-for="Name">Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="Name">
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Venue">Venue</label>
+                        <input asp-for="Venue" class="form-control" placeholder="Venue">
+                        <span class="text-danger" asp-validation-for="Venue"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description">Description</label>
+                        <input asp-for="Description" class="form-control" placeholder="Description">
+                        <span class="text-danger" asp-validation-for="Description"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StartTime">Start Date</label>
+                        <input asp-for="StartTime" class="form-control" placeholder="Start Time">
+                        <span class="text-danger" asp-validation-for="StartTime"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EndTime">Start Date</label>
+                        <input asp-for="EndTime" class="form-control" placeholder="End Time">
+                        <span class="text-danger" asp-validation-for="EndTime"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Photo">Photo</label>
+                        <input asp-for="Photo" class="form-control" accept="image/*" placeholder="Photo">
+                        <span class="text-danger" asp-validation-for="Photo"></span>
+                    </div>
+                    <div class="form-group">
+                        <select class="selectpicker" asp-for="SpeakersInput" asp-items="@(new SelectList(Model.Speakers,"Name","Name"))"></select>
+                        <label class="form-label select-label">Choose spekaers</label>
+                        <span class="text-danger" asp-validation-for="SpeakersInput"></span>
+                    </div>
+                    <div class="form-group">
+                        <select class="selectpicker" asp-for="CategoriesInput" asp-items="@(new SelectList(Model.Categories,"Name","Name"))"></select>
+                        <label class="form-label select-label">Choose categories</label>
+                        <span class="text-danger" asp-validation-for="CategoriesInput"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button asp-action="Index" class="btn btn-light">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

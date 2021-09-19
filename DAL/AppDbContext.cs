@@ -17,5 +17,9 @@ namespace EduHome.DAL
         public DbSet<NoticeBoardItem> NoticeBoardItems { get; set; }
         public DbSet<Speaker> Speakers { get; set; }
         public DbSet<SpeakerImage> SpeakerImage { get; set; }
+        public DbSet<EventCategory> EventCategories { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<SpeakerEvent> SpeakerEvents { get; set; }
+        public DbSet<EventImage> EventImage { get; set; }
     }
 }

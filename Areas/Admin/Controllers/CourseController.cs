@@ -80,16 +80,22 @@ namespace EduHome.Areas.Admin.Controllers
 
             var photo = courseAdminVM.Photo;
 
+            if(photo == null)
+            {
+                ModelState.AddModelError("Photo", "Photo can not be empty");
+                return View(ca);
+            }
+
             if (!FileHelper.CheckContent(photo.ContentType, "image/"))
             {
                 ModelState.AddModelError("Photo", "Please select image format");
-                return View(courseAdminVM);
+                return View(ca);
             }
 
             if (!FileHelper.CheckLength(photo.Length, 200))
             {
                 ModelState.AddModelError("Photo", "Image size must be less than 200kb");
-                return View(courseAdminVM);
+                return View(ca);
             }
 
             FileHelper.CreateFile(photo.FileName, _env.WebRootPath, "img", photo);
@@ -246,13 +252,13 @@ namespace EduHome.Areas.Admin.Controllers
                 if (!FileHelper.CheckContent(photo.ContentType, "image/"))
                 {
                     ModelState.AddModelError("Photo", "Please select image format");
-                    return View(courseAdminVM);
+                    return View(ca);
                 }
 
                 if (!FileHelper.CheckLength(photo.Length, 200))
                 {
                     ModelState.AddModelError("Photo", "Image size must be less than 200kb");
-                    return View(courseAdminVM);
+                    return View(ca);
                 }
 
                 FileHelper.DeleteFile(existingImage.Photo, _env.WebRootPath, "img");
