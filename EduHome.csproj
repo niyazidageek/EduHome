@@ -31,6 +31,7 @@
     <None Remove="Areas\Admin\Views\NoticeBoard\" />
     <None Remove="Areas\Admin\Views\Speaker\" />
     <None Remove="Areas\Admin\Views\Event\" />
+    <None Remove="Areas\Admin\Views\Skill\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
@@ -68,6 +69,7 @@
     <Folder Include="Areas\Admin\Views\NoticeBoard\" />
     <Folder Include="Areas\Admin\Views\Speaker\" />
     <Folder Include="Areas\Admin\Views\Event\" />
+    <Folder Include="Areas\Admin\Views\Skill\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

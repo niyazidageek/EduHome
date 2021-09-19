@@ -94,3 +94,6 @@
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Event/CreateEvent.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Event/Index.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Event/EditEvent.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Skill/CreateSkill.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Skill/Index.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Skill/EditSkill.cshtml.g.cs

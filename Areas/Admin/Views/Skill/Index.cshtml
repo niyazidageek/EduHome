@@ -1,0 +1,24 @@
+﻿@model List<Skill>
+
+<a asp-controller="Skill" asp-action="CreateSkill" class="btn btn-success">Create</a>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th> Skill name</th>
+            <th> Delete </th>
+            <th> Edit </th>
+            <th> Details </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var skill in Model)
+        {
+            <tr>
+                <td> @skill.Name </td>
+                <td> <a asp-action="DeleteSkill" asp-route-id="@skill.Id" class="btn btn-danger"> Delete </a> </td>
+                <td> <a asp-action="EditSkill" asp-route-id="@skill.Id" class="btn btn-primary"> Edit </a> </td>
+                <td> <a class="btn btn-info"> Details </a> </td>
+            </tr>
+        }
+    </tbody>
+</table>
