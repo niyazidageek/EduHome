@@ -1,0 +1,12 @@
+﻿@model TeacherVM
+
+
+<div data-id="@Model.Count" class="form-group" style="display:flex">
+    <label class="form-label select-label">Choose a category</label>
+    <select class="form-select" asp-for="SkillsInput[Model.Count]" asp-items="@(new SelectList(Model.Skills,"Name","Name"))"></select>
+
+    <label class="form-label select-label">Percentage</label>
+    <input asp-for="PercentagesInput[Model.Count]" />
+    <a class="delete-skill" data-id="@Model.Count">Delete</a>
+</div>
+

@@ -32,6 +32,10 @@
     <None Remove="Areas\Admin\Views\Speaker\" />
     <None Remove="Areas\Admin\Views\Event\" />
     <None Remove="Areas\Admin\Views\Skill\" />
+    <None Remove="Areas\Admin\Views\Teacher\" />
+    <None Remove="Areas\Admin\ViewComponents\" />
+    <None Remove="Areas\Admin\Views\Shared\Components\" />
+    <None Remove="Areas\Admin\Views\Shared\Components\TeacherSkill\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
@@ -70,6 +74,10 @@
     <Folder Include="Areas\Admin\Views\Speaker\" />
     <Folder Include="Areas\Admin\Views\Event\" />
     <Folder Include="Areas\Admin\Views\Skill\" />
+    <Folder Include="Areas\Admin\Views\Teacher\" />
+    <Folder Include="Areas\Admin\ViewComponents\" />
+    <Folder Include="Areas\Admin\Views\Shared\Components\" />
+    <Folder Include="Areas\Admin\Views\Shared\Components\TeacherSkill\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
