@@ -8,86 +8,93 @@
                 <h4 class="card-title">Create course</h4>
                 <form enctype="multipart/form-data" class="forms-sample" method="post">
                     <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+                    <input hidden asp-for="TeacherId" value="@Model.TeacherId" />
                     <div class="form-group">
                         <label asp-for="Fullname">Fullname</label>
-                        <input asp-for="Fullname" class="form-control" placeholder="Fullname">
+                        <input asp-for="Fullname" class="form-control" placeholder="Fullname" value="@Model.Teacher.FullName">
                         <span class="text-danger" asp-validation-for="Fullname"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Position">Position</label>
-                        <input asp-for="Position" class="form-control" placeholder="Position">
+                        <input asp-for="Position" class="form-control" placeholder="Position" value="@Model.Teacher.Position">
                         <span class="text-danger" asp-validation-for="Position"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Info">Info</label>
-                        <input asp-for="Info" class="form-control" placeholder="Info">
+                        <input asp-for="Info" class="form-control" placeholder="Info" value="@Model.Teacher.Info">
                         <span class="text-danger" asp-validation-for="Info"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Degree">Degree</label>
-                        <input asp-for="Degree" class="form-control" placeholder="Degree">
+                        <input asp-for="Degree" class="form-control" placeholder="Degree" value="@Model.Teacher.Info">
                         <span class="text-danger" asp-validation-for="Degree"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Experience">Experience</label>
-                        <input asp-for="Experience" class="form-control" placeholder="Experience">
+                        <input asp-for="Experience" class="form-control" placeholder="Experience" value="@Model.Teacher.Experience">
                         <span class="text-danger" asp-validation-for="Experience"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Hobbies">Hobbies</label>
-                        <input asp-for="Hobbies" class="form-control" placeholder="Hobbies">
+                        <input asp-for="Hobbies" class="form-control" placeholder="Hobbies" value="@Model.Teacher.Hobbies">
                         <span class="text-danger" asp-validation-for="Hobbies"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Faculty">Faculty</label>
-                        <input asp-for="Faculty" class="form-control" placeholder="Faculty">
+                        <input asp-for="Faculty" class="form-control" placeholder="Faculty" value="@Model.Teacher.Faculty">
                         <span class="text-danger" asp-validation-for="Faculty"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Mail">Mail</label>
-                        <input asp-for="Mail" class="form-control" placeholder="Mail">
+                        <input asp-for="Mail" class="form-control" placeholder="Mail" value="@Model.Teacher.TeacherContact.Mail">
                         <span class="text-danger" asp-validation-for="Mail"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Phone">Phone</label>
-                        <input asp-for="Phone" class="form-control" placeholder="Phone">
+                        <input asp-for="Phone" class="form-control" placeholder="Phone" value="@Model.Teacher.TeacherContact.Phone">
                         <span class="text-danger" asp-validation-for="Phone"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="SkypeUserName">SkypeUserName</label>
-                        <input asp-for="SkypeUserName" class="form-control" placeholder="SkypeUserName">
+                        <input asp-for="SkypeUserName" class="form-control" placeholder="SkypeUserName" value="@Model.Teacher.TeacherContact.SkypeUserName">
                         <span class="text-danger" asp-validation-for="SkypeUserName"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="FacebookUserName">FacebookUserName</label>
-                        <input asp-for="FacebookUserName" class="form-control" placeholder="FacebookUserName">
+                        <input asp-for="FacebookUserName" class="form-control" placeholder="FacebookUserName" value="@Model.Teacher.TeacherContact.FacebookUserName">
                         <span class="text-danger" asp-validation-for="FacebookUserName"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="PinterestUserName">PinterestUserName</label>
-                        <input asp-for="PinterestUserName" class="form-control" placeholder="PinterestUserName">
+                        <input asp-for="PinterestUserName" class="form-control" placeholder="PinterestUserName" value="@Model.Teacher.TeacherContact.PinterestUserName">
                         <span class="text-danger" asp-validation-for="PinterestUserName"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="TwitterUserName">TwitterUserName</label>
-                        <input asp-for="TwitterUserName" class="form-control" placeholder="TwitterUserName">
+                        <input asp-for="TwitterUserName" class="form-control" placeholder="TwitterUserName" value="@Model.Teacher.TeacherContact.TwitterUserName">
                         <span class="text-danger" asp-validation-for="TwitterUserName"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="Photo">Photo</label>
-                        <input asp-for="Photo" class="form-control" accept="image/*" placeholder="Photo">
+                        <img width="400px" src="~/img/@Model.Teacher.TeacherImage.Photo" id="blah" />
+                        <input asp-for="Photo" class="form-control" accept="image/*" placeholder="Photo" id="imgInp">
                         <span class="text-danger" asp-validation-for="Photo"></span>
                     </div>
                     <div class="form-group">
                         <div class="form-group">
                             <label class="form-label select-label">Choose skills</label>
-                            <select class="selectpicker" asp-for="SkillsInput" asp-items="@(new SelectList(Model.Skills,"Name","Name"))"></select>
+                            <select class="selectpicker" asp-for="SkillsInput" asp-items="@(new SelectList(ViewBag.Skills,"Name","Name"))">
+                                @foreach (var option in Model.Teacher.TeacherSkills)
+                                {
+                                    <option selected value="@option.Skill.Name"> @option.Skill.Name </option>
+                                }
+                            </select>
                             <span class="text-danger" asp-validation-for="SkillsInput"></span>
-                            <br/>
+                            <br />
                             <label asp-for="PercentagesInput">Insert percentages</label>
-                            <input asp-for="PercentagesInput" />
+                            <input asp-for="PercentagesInput" value="@Model.PercentagesInput" />
                             <span class="text-danger" asp-validation-for="PercentagesInput"></span>
-                        </div>
+                        </div>  
                     </div>
 
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
@@ -97,7 +104,14 @@
         </div>
     </div>
 </div>
-
+<script>
+    imgInp.onchange = evt => {
+  const [file] = imgInp.files
+  if (file) {
+    blah.src = URL.createObjectURL(file)
+  }
+}
+</script>
 @section SkillScript
 {
     <script src="~/js/skill.js"></script>

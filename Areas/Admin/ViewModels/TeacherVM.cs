@@ -35,10 +35,11 @@ namespace EduHome.Areas.Admin.ViewModels
         [Required, StringLength(255)]
         public string TwitterUserName { get; set; }
         public int TeacherId { get; set; }
+        public Teacher Teacher { get; set; }
         public IFormFile Photo { get; set; }
-        public List<SkillVM> Skills { get; set; }
+        public List<SkillVM> Skills { get; set; }   
         public List<string> SkillsInput { get; set; }
-        public List<int> PercentagesInput { get; set; }
+        public string PercentagesInput { get; set; }
         public int Count { get; set; }
     }
 }
