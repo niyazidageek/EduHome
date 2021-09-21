@@ -18,5 +18,6 @@ namespace EduHome.Models
         public bool IsDeleted { get; set; }
         public BlogImage BlogImage { get; set; }
         public IList<BlogCategory> BlogCategories { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }

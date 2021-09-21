@@ -28,6 +28,7 @@ namespace EduHome.Areas.Admin.Controllers
         {
             List<Blog> Blogs = await _context.Blogs.Where(b => b.IsDeleted == false)
                 .Include(b => b.BlogImage)
+                .Include(b => b.Comments)
                 .Include(b => b.BlogCategories)
                 .ThenInclude(b => b.Category)
                 .ToListAsync();
@@ -113,6 +114,7 @@ namespace EduHome.Areas.Admin.Controllers
         {
             var blog = await _context.Blogs.Where(b => b.IsDeleted == false)
                 .Include(b => b.BlogImage)
+                .Include(b => b.Comments)
                 .Include(b => b.BlogCategories)
                 .ThenInclude(b => b.Category)
                 .FirstOrDefaultAsync(b => b.Id == id);
@@ -158,6 +160,7 @@ namespace EduHome.Areas.Admin.Controllers
         {
             var blog = await _context.Blogs.Where(b => b.IsDeleted == false)
                 .Include(b => b.BlogImage)
+                .Include(b=>b.Comments)
                 .Include(b => b.BlogCategories)
                 .ThenInclude(b => b.Category)
                 .FirstOrDefaultAsync(b => b.Id == blogVM.BlogId);

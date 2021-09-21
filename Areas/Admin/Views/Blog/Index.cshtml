@@ -8,6 +8,7 @@
             <th> Post Date </th>
             <th> Blog Author </th>
             <th> Categories </th>
+            <th> Comments </th>
             <th> Blog Photo </th>
             <th> Delete </th>
             <th> Edit </th>
@@ -28,6 +29,7 @@
                 <td> @blog.PostDate?.ToString("MMMM dd,yyyy") </td>
                 <td> @blog.AuthorFullName </td>
                 <td> @String.Join(", ", categories.ToArray()) </td>
+                <td> @blog.Comments.Count </td>
                 <td> <img src="~/img/@blog.BlogImage.Photo" /> </td>
                 <td> <a asp-action="DeleteBlog" asp-route-id="@blog.Id" class="btn btn-danger"> Delete </a> </td>
                 <td> <a asp-action="EditBlog" asp-route-id="@blog.Id" class="btn btn-primary"> Edit </a> </td>
