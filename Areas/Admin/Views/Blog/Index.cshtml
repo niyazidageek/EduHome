@@ -1,0 +1,39 @@
+﻿@model List<Blog>
+
+<a asp-controller="Blog" asp-action="CreateBlog" class="btn btn-success">Create</a>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th> Blog Id </th>
+            <th> Post Date </th>
+            <th> Blog Author </th>
+            <th> Categories </th>
+            <th> Blog Photo </th>
+            <th> Delete </th>
+            <th> Edit </th>
+            <th> Details </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var blog in Model)
+        {
+            List<string> categories = new List<string>();
+            foreach (var category in blog.BlogCategories)
+            {
+                categories.Add(category.Category.Name);
+            }
+
+            <tr>
+                <td> @blog.Id </td>
+                <td> @blog.PostDate?.ToString("MMMM dd,yyyy") </td>
+                <td> @blog.AuthorFullName </td>
+                <td> @String.Join(", ", categories.ToArray()) </td>
+                <td> <img src="~/img/@blog.BlogImage.Photo" /> </td>
+                <td> <a asp-action="DeleteBlog" asp-route-id="@blog.Id" class="btn btn-danger"> Delete </a> </td>
+                <td> <a asp-action="EditBlog" asp-route-id="@blog.Id" class="btn btn-primary"> Edit </a> </td>
+                <td> <a class="btn btn-info"> Details </a> </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

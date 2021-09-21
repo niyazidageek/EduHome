@@ -26,5 +26,8 @@ namespace EduHome.DAL
         public DbSet<TeacherImage> TeacherImage { get; set; }
         public DbSet<TeacherContact> TeacherContact { get; set; }
         public DbSet<TeacherSkill> TeacherSkills { get; set; }
+        public DbSet<BlogCategory> BlogCategories { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<BlogImage> BlogImage { get; set; }
     }
 }
