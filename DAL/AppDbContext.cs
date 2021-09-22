@@ -2,10 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using EduHome.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace EduHome.DAL
 {
-    public class AppDbContext: DbContext
+    public class AppDbContext:IdentityDbContext<AppUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options): base(options)
         {

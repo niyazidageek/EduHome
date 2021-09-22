@@ -33,10 +33,13 @@
     <None Remove="Areas\Admin\Views\Event\" />
     <None Remove="Areas\Admin\Views\Skill\" />
     <None Remove="Areas\Admin\Views\Teacher\" />
-    <None Remove="Areas\Admin\Views\Shared\Components\" />
-    <None Remove="Areas\Admin\Views\Shared\Components\TeacherSkill\" />
     <None Remove="Areas\Admin\Views\Blog\" />
     <None Remove="Areas\Admin\Views\Slider\" />
+    <None Remove="Views\Account\" />
+    <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <None Remove="Areas\Admin\Views\Home\" />
+    <None Remove="Areas\Admin\Views\Account\" />
+    <None Remove="MailKit" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
@@ -46,6 +49,8 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.18" />
+    <PackageReference Include="MailKit" Version="2.15.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAL\" />
@@ -76,10 +81,11 @@
     <Folder Include="Areas\Admin\Views\Event\" />
     <Folder Include="Areas\Admin\Views\Skill\" />
     <Folder Include="Areas\Admin\Views\Teacher\" />
-    <Folder Include="Areas\Admin\Views\Shared\Components\" />
-    <Folder Include="Areas\Admin\Views\Shared\Components\TeacherSkill\" />
     <Folder Include="Areas\Admin\Views\Blog\" />
     <Folder Include="Areas\Admin\Views\Slider\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Areas\Admin\Views\Home\" />
+    <Folder Include="Areas\Admin\Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

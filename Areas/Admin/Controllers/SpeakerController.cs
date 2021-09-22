@@ -6,12 +6,14 @@ using EduHome.Areas.Admin.Helpers;
 using EduHome.Areas.Admin.ViewModels;
 using EduHome.DAL;
 using EduHome.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class SpeakerController : Controller
     {

@@ -1,27 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using EduHome.Areas.Admin.Helpers;
 using EduHome.Areas.Admin.ViewModels;
 using EduHome.DAL;
 using EduHome.Models;
+using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MimeKit;
 
 namespace EduHome.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class EventController : Controller
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _env;
+        private readonly UserManager<AppUser> _userManager;
 
-        public EventController(AppDbContext context, IWebHostEnvironment env)
+        public EventController(UserManager<AppUser> userManager,AppDbContext context, IWebHostEnvironment env)
         {
             _context = context;
             _env = env;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> Index()
@@ -109,7 +118,7 @@ namespace EduHome.Areas.Admin.Controllers
                 StartTime = eventVM.StartTime,
                 EndTime = eventVM.EndTime,
                 IsDeleted = false,
-                EventImage = new EventImage { Photo = FileHelper.UniqueFileName}
+                EventImage = new EventImage { Photo = FileHelper.UniqueFileName }
             };
 
             _context.Events.Add(_event);
@@ -131,6 +140,8 @@ namespace EduHome.Areas.Admin.Controllers
                 _context.SaveChanges();
             }
 
+            var users = await _userManager.GetUsersInRoleAsync(Roles.Client.ToString());
+            EmailHelper.SendEmail((List<AppUser>)users, "New event!", $"{_event.Name} is available now");
 
             return RedirectToAction(nameof(Index));
         }

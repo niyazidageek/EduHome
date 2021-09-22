@@ -1,0 +1,7 @@
+﻿@model HomeVM
+<h1> later bitches </h1>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <h1> @Model.UserName </h1>
+}
