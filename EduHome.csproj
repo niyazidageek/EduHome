@@ -36,6 +36,7 @@
     <None Remove="Areas\Admin\Views\Shared\Components\" />
     <None Remove="Areas\Admin\Views\Shared\Components\TeacherSkill\" />
     <None Remove="Areas\Admin\Views\Blog\" />
+    <None Remove="Areas\Admin\Views\Slider\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
@@ -78,6 +79,7 @@
     <Folder Include="Areas\Admin\Views\Shared\Components\" />
     <Folder Include="Areas\Admin\Views\Shared\Components\TeacherSkill\" />
     <Folder Include="Areas\Admin\Views\Blog\" />
+    <Folder Include="Areas\Admin\Views\Slider\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

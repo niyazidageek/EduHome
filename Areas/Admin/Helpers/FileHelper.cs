@@ -21,7 +21,7 @@ namespace EduHome.Areas.Admin.Helpers
 
         public static bool CheckLength(long length, int kb)
         {
-            if (length / 1024 < 200)
+            if (length / 1024 < 1500)
             {
                 return true;
             }

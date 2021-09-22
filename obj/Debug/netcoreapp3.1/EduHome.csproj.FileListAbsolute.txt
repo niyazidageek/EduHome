@@ -104,3 +104,6 @@
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Blog/CreateBlog.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Blog/EditBlog.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Blog/Index.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Slider/CreateSlider.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Slider/EditSlider.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Slider/Index.cshtml.g.cs
