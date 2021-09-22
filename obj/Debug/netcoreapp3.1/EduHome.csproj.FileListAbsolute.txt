@@ -120,3 +120,7 @@
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/MailKit.dll
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/MimeKit.dll
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/BouncyCastle.Crypto.dll
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/WelcomeSection/Default.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/NoticeBoard/Default.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/Blog/Default.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/Newsteller/Default.cshtml.g.cs

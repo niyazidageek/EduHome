@@ -40,6 +40,10 @@
     <None Remove="Areas\Admin\Views\Home\" />
     <None Remove="Areas\Admin\Views\Account\" />
     <None Remove="MailKit" />
+    <None Remove="Views\Shared\Components\WelcomeSection\" />
+    <None Remove="Views\Shared\Components\NoticeBoard\" />
+    <None Remove="Views\Shared\Components\Blog\" />
+    <None Remove="Views\Shared\Components\Newsteller\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
@@ -86,6 +90,10 @@
     <Folder Include="Views\Account\" />
     <Folder Include="Areas\Admin\Views\Home\" />
     <Folder Include="Areas\Admin\Views\Account\" />
+    <Folder Include="Views\Shared\Components\WelcomeSection\" />
+    <Folder Include="Views\Shared\Components\NoticeBoard\" />
+    <Folder Include="Views\Shared\Components\Blog\" />
+    <Folder Include="Views\Shared\Components\Newsteller\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

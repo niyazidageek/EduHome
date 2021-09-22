@@ -8,14 +8,14 @@ namespace EduHome.Areas.Admin.Helpers
 {
     public static class EmailHelper
     {
-        public static void SendEmail(List<AppUser> Receivers, string sub, string body)
+        public static void SendEmail(List<string> Receivers, string sub, string body)
         {
 
             var message = new MailMessage();
 
             foreach (var receiver in Receivers)
             {
-                message.To.Add(receiver.Email);
+                message.To.Add(receiver);
             }
 
 

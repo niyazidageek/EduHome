@@ -140,8 +140,23 @@ namespace EduHome.Areas.Admin.Controllers
                 _context.SaveChanges();
             }
 
+            List<string> Receivers = new List<string>();
             var users = await _userManager.GetUsersInRoleAsync(Roles.Client.ToString());
-            EmailHelper.SendEmail((List<AppUser>)users, "New event!", $"{_event.Name} is available now");
+            var subscribers = await _context.Subscribers.ToListAsync();
+
+            foreach (var user in users)
+            {
+                Receivers.Add(user.Email);
+            }
+            
+            foreach (var subscriber in subscribers)
+            {
+                Receivers.Add(subscriber.Email);
+            }
+
+            Receivers = Receivers.Distinct().ToList();
+
+            EmailHelper.SendEmail(Receivers, "New event!", $"{_event.Name} is available now");
 
             return RedirectToAction(nameof(Index));
         }

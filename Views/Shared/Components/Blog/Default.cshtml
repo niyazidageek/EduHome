@@ -1,0 +1,27 @@
+﻿@using EduHome.Models
+@model List<Blog>
+
+@foreach (var blog in Model)
+{
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="single-blog">
+            <div class="blog-img">
+                <a style="width:370px;height:250px" href="blog-details.html"><img style="overflow:hidden; height:100%" src="~/img/@blog.BlogImage.Photo" alt="blog"></a>
+                <div class="blog-hover">
+                    <a href="blog-details.html"><i class="fa fa-link"></i></a>
+                </div>
+            </div>
+            <div class="blog-content">
+                <div class="blog-top">
+                    <p>By @blog.AuthorFullName  /  @blog.PostDate?.ToString("MMMM dd, yyyy")  /  <i class="fa fa-comments-o"></i> @blog.Comments.Count</p>
+                </div>
+                <div class="blog-bottom">
+                    <h2><a href="blog-details.html">@blog.Name</a></h2>
+                    <a href="blog-details.html">read more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

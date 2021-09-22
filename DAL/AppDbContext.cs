@@ -32,5 +32,6 @@ namespace EduHome.DAL
         public DbSet<BlogImage> BlogImage { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<Subscriber> Subscribers { get; set; }
     }
 }
