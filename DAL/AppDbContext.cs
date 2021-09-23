@@ -33,5 +33,6 @@ namespace EduHome.DAL
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Subscriber> Subscribers { get; set; }
+        public DbSet<Message> Messages { get; set; }
     }
 }

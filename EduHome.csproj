@@ -44,6 +44,13 @@
     <None Remove="Views\Shared\Components\NoticeBoard\" />
     <None Remove="Views\Shared\Components\Blog\" />
     <None Remove="Views\Shared\Components\Newsteller\" />
+    <None Remove="Views\Shared\Components\Slider\" />
+    <None Remove="Views\Shared\Components\Teacher\" />
+    <None Remove="Views\Course\" />
+    <None Remove="Views\Event\" />
+    <None Remove="Views\Teacher\" />
+    <None Remove="Views\Blog\" />
+    <None Remove="Views\Contact\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.1.1" />
@@ -94,6 +101,13 @@
     <Folder Include="Views\Shared\Components\NoticeBoard\" />
     <Folder Include="Views\Shared\Components\Blog\" />
     <Folder Include="Views\Shared\Components\Newsteller\" />
+    <Folder Include="Views\Shared\Components\Slider\" />
+    <Folder Include="Views\Shared\Components\Teacher\" />
+    <Folder Include="Views\Course\" />
+    <Folder Include="Views\Event\" />
+    <Folder Include="Views\Teacher\" />
+    <Folder Include="Views\Blog\" />
+    <Folder Include="Views\Contact\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

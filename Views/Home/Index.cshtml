@@ -1,30 +1,6 @@
 ﻿@model HomeVM
 
-<section id="slider-container" class="slider-area two">
-    <div class="slider-owl owl-theme owl-carousel">
-        <!-- Start Slingle Slide -->
-        @foreach (var slider in Model.Sliders)
-        {
-            <div class="single-slide item" style="background-image: url(img/@slider.Photo)">
-                <div class="slider-content-area">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
-                                <div class="slide-content-wrapper">
-                                    <div class="slide-content text-center">
-                                        <h2>@slider.Title</h2>
-                                        <p>@slider.Text</p>
-                                        <a class="default-btn" asp-controller="About" asp-action="Index">@slider.ButtonText</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-</section>
+@await Component.InvokeAsync("Slider")
 <!-- Background Area End -->
 <!-- Service Start -->
 <div class="service-area two pt-150 pb-150">

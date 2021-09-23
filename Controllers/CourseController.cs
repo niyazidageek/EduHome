@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EduHome.Controllers
 {
-    public class HomeController : Controller
+    public class CourseController : Controller
     {
         private readonly AppDbContext _context;
-        public HomeController(AppDbContext context)
+        public CourseController(AppDbContext context)
         {
             _context = context;
         }
@@ -20,22 +20,16 @@ namespace EduHome.Controllers
         public async Task<IActionResult> Index()
         {
             var Courses = await _context.Courses.Where(c => c.IsDeleted == false)
-                .OrderByDescending(s=>s.Id)
-                .Take(3)
-                .Include(c => c.CourseImage).ToListAsync();
-            var Events = await _context.Events.Where(e => e.IsDeleted == false)
-                .Include(e => e.EventImage)
-                .OrderByDescending(e => e.Id)
-                .Take(4)
+                .Take(12)
+                .OrderByDescending(c => c.Id)
+                .Include(c => c.CourseImage)
                 .ToListAsync();
-
-            HomeVM homeVM = new HomeVM
+            CourseVM courseVM = new CourseVM
             {
-                Courses = Courses,
-                Events = Events
+                Courses = Courses
             };
 
-            return View(homeVM);
+            return View(courseVM);
         }
     }
 }

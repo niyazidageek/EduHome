@@ -4,9 +4,8 @@ using EduHome.Models;
 
 namespace EduHome.ViewModels
 {
-    public class HomeVM
+    public class CourseVM
     {
         public List<Course> Courses { get; set; }
-        public List<Event> Events { get; set; }
     }
 }
