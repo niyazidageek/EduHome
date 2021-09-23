@@ -7,7 +7,6 @@
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/EduHome.pdb
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/EduHome.Views.dll
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/EduHome.Views.pdb
-/Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/AutoMapper.dll
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/Humanizer.dll
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/Microsoft.Data.SqlClient.dll
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/Microsoft.EntityFrameworkCore.dll
@@ -131,3 +130,10 @@
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Teacher/Index.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Blog/Index.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Contact/Index.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Message/Index.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Message/ViewMessage.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/EduHome.MvcApplicationPartsAssemblyInfo.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/JetBrains.Annotations.dll
+/Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/X.PagedList.dll
+/Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/X.PagedList.Mvc.Core.dll
+/Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/X.PagedList.Web.Common.dll

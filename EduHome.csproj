@@ -51,9 +51,14 @@
     <None Remove="Views\Teacher\" />
     <None Remove="Views\Blog\" />
     <None Remove="Views\Contact\" />
+    <None Remove="Areas\Admin\Views\Message\" />
+    <None Remove="PagedList.Mvc" />
+    <None Remove="PagedList.Core.Mvc" />
+    <None Remove="X.PagedList" />
+    <None Remove="X.PagedList.Mvc.Core" />
+    <None Remove="X.PagedList.Web.Common" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -62,6 +67,9 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.18" />
     <PackageReference Include="MailKit" Version="2.15.0" />
+    <PackageReference Include="X.PagedList" Version="8.1.0" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.1.0" />
+    <PackageReference Include="X.PagedList.Web.Common" Version="8.0.7" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DAL\" />
@@ -108,6 +116,7 @@
     <Folder Include="Views\Teacher\" />
     <Folder Include="Views\Blog\" />
     <Folder Include="Views\Contact\" />
+    <Folder Include="Areas\Admin\Views\Message\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

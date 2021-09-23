@@ -14,7 +14,7 @@
         "outputPath": "/Users/niyazibabayev/Projects/EduHome/EduHome/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/niyazibabayev/.nuget/NuGet/NuGet.Config"
+          "/Users/niyazibabayev/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -38,10 +38,6 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "AutoMapper": {
-              "target": "Package",
-              "version": "[10.1.1, )"
-            },
             "MailKit": {
               "target": "Package",
               "version": "[2.15.0, )"
@@ -63,6 +59,18 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.10, )"
+            },
+            "X.PagedList": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            },
+            "X.PagedList.Mvc.Core": {
+              "target": "Package",
+              "version": "[8.1.0, )"
+            },
+            "X.PagedList.Web.Common": {
+              "target": "Package",
+              "version": "[8.0.7, )"
             }
           },
           "imports": [

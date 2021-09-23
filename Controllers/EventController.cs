@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using X.PagedList.Mvc.Core;
+using X.PagedList;
+using X.PagedList.Mvc;
+using System.Web;
 using System.Linq;
 using System.Threading.Tasks;
 using EduHome.DAL;
@@ -17,13 +21,13 @@ namespace EduHome.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int? number)
         {
-            var Events = await _context.Events.Where(e => e.IsDeleted == false)
+            var Events = _context.Events.Where(e => e.IsDeleted == false)
                 .OrderByDescending(e => e.Id)
-                .Take(12)
                 .Include(e => e.EventImage)
-                .ToListAsync();
+                .ToList()
+                .ToPagedList(number ?? 1, 12);
 
             EventVM eventVM = new EventVM
             {
