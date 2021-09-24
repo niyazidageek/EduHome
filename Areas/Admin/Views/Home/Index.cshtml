@@ -1,7 +1,9 @@
 ﻿@model HomeVM
-<h1> later bitches </h1>
 
-@if (User.Identity.IsAuthenticated)
-{
-    <h1> @Model.UserName </h1>
-}
+<div class="container d-flex justify-content-center align-items center">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h1> Hi @Model.UserName ! </h1>
+    }
+</div>
+

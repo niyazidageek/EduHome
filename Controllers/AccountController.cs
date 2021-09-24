@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EduHome.Areas.Admin.Helpers;
 using EduHome.Models;
 using EduHome.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,13 +24,10 @@ namespace EduHome.Controllers
             _roleManager = roleManager;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         public IActionResult Register()
         {
+            if (User.Identity.IsAuthenticated) return NotFound();
             return View();
         }
 
@@ -37,6 +35,8 @@ namespace EduHome.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Register(RegisterVM registerVM)
         {
+            if (User.Identity.IsAuthenticated) return NotFound();
+
             if (!ModelState.IsValid) return View(registerVM);
             AppUser user = new AppUser
             {
@@ -64,6 +64,7 @@ namespace EduHome.Controllers
 
         public IActionResult Login()
         {
+            if (User.Identity.IsAuthenticated) return NotFound();
             return View();
         }
 
@@ -71,6 +72,7 @@ namespace EduHome.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Login(LoginVM loginVM)
         {
+            if (User.Identity.IsAuthenticated) return NotFound();
             if (!ModelState.IsValid) return View(loginVM);
 
             AppUser user = await _userManager.FindByNameAsync(loginVM.Username);
@@ -97,6 +99,7 @@ namespace EduHome.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

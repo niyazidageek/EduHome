@@ -62,6 +62,7 @@ namespace EduHome.Areas.Admin.Controllers
 
         public IActionResult Login()
         {
+            if (!User.Identity.IsAuthenticated) return NotFound();
             return View();
         }
 
@@ -69,6 +70,7 @@ namespace EduHome.Areas.Admin.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Login(LoginAdminVM loginVM)
         {
+            if (!User.Identity.IsAuthenticated) return NotFound();
             if (!ModelState.IsValid) return View(loginVM);
 
             AppUser user = await _userManager.FindByNameAsync(loginVM.Username);

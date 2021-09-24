@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using EduHome.DAL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 
 namespace EduHome.ViewComponents
 {

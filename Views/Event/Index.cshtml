@@ -51,8 +51,13 @@
                     </div>
                 </div>
             }
-            @Html.PagedListPager(Model.Events,number=>Url.Action("Index","Event", new { number }))
         </div>
     </div>
+    <div class="row">
+        <div class="col-xs-12">
+            @Html.PagedListPager(Model.Events, number => Url.Action("Index", "Event", new { number }))
+        </div>
+    </div>
+    
 </div>
 @await Component.InvokeAsync("Newsteller")

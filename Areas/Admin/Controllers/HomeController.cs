@@ -16,7 +16,6 @@ namespace EduHome.Areas.Admin.Controllers
         {
             HomeVM homeVM = new HomeVM();
             if (User.Identity.IsAuthenticated) homeVM.UserName = User.Identity.Name;
-
             return View(homeVM);
         }
     }

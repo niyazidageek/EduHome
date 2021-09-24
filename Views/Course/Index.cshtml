@@ -1,4 +1,6 @@
-﻿@model CourseVM
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList; 
+@model CourseVM
 
 <div class="banner-area-wrapper">
     <div class="banner-area text-center">
@@ -53,6 +55,11 @@
                     </div>
                 </div>
             }
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                @Html.PagedListPager(Model.Courses, number => Url.Action("Index", "Course", new { number }))
+            </div>
         </div>
     </div>
 </div>

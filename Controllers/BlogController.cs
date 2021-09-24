@@ -8,29 +8,30 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using X.PagedList;
 
-namespace EduHome.Controllers
+namespace EduHome.ViewComponents
 {
-    public class CourseController : Controller
+    public class BlogController : Controller
     {
         private readonly AppDbContext _context;
-        public CourseController(AppDbContext context)
+        public BlogController(AppDbContext context)
         {
             _context = context;
         }
 
         public IActionResult Index(int? number)
         {
-            var Courses =  _context.Courses.Where(c => c.IsDeleted == false)
-                .OrderByDescending(c => c.Id)
-                .Include(c => c.CourseImage)
+            var Blogs = _context.Blogs.Where(e => e.IsDeleted == false)
+                .Include(b => b.BlogImage)
+                .Include(b => b.Comments)
                 .ToList()
                 .ToPagedList(number ?? 1, 12);
-            CourseVM courseVM = new CourseVM
+
+            BlogVM blogVM = new BlogVM
             {
-                Courses = Courses
+                Blogs = Blogs
             };
 
-            return View(courseVM);
+            return View(blogVM);
         }
     }
 }
