@@ -12,6 +12,7 @@ namespace EduHome.Models
         [Required, StringLength(255)]
         public string Subject { get; set; }
         [Required, StringLength(1200)]
+        public bool IsDeleted { get; set; }
         public string Message { get; set; }
         public Blog Blog { get; set; }
     }

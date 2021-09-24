@@ -1,0 +1,119 @@
+﻿@using EduHome.Models
+@model BlogDetailVM
+
+<div class="banner-area-wrapper">
+    <div class="banner-area text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="banner-content-wrapper">
+                        <div class="banner-content">
+                            <h2>blog details</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="blog-details-area pt-150 pb-140">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog-details">
+                    <div class="blog-details-img">
+                        <img src="~/img/@Model.Blog.BlogImage.Photo" alt="blog-details">
+                    </div>
+                    <div class="blog-details-content">
+                        <h2>@Model.Blog.Name</h2>
+                        <h6>By @Model.Blog.AuthorFullName  /  @Model.Blog.PostDate?.ToString("MMMM dd, yyyy")  /  <i class="fa fa-comments-o"></i> @Model.Blog.Comments.Count</h6>
+                        <p>@Model.Blog.Content</p>
+                    </div>
+                    <div class="reply-area">
+                        <h3>LEAVE A COMMENT</h3>
+                        <form asp-controller="Blog" asp-action="BlogDetail" method="post">
+                            
+                            <div class="row">
+                                <div asp-validation-summary="ModelOnly" class="alert-danger"></div>
+                                <div class="col-md-12">
+                                    <p>Name</p>
+                                    <input asp-for="@Model.Comment.FullName">
+                                    <span asp-validation-for="@Model.Comment.FullName" class="text-danger"></span>
+                                </div>
+                                <input hidden asp-for="BlogId" value="@Model.Blog.Id" />
+                                <div class="col-md-12">
+                                    <p>Email</p>
+                                    <input asp-for="@Model.Comment.Mail">
+                                    <span asp-validation-for="@Model.Comment.Mail" class="text-danger"></span>
+                                </div>
+                                <div class="col-md-12">
+                                    <p>Subject</p>
+                                    <input asp-for="@Model.Comment.Subject">
+                                    <span asp-validation-for="@Model.Comment.Subject" class="text-danger"></span>
+                                    <p>Massage</p>
+                                    <textarea asp-for="@Model.Comment.Message" cols="15" rows="10"></textarea>
+                                    <span asp-validation-for="@Model.Comment.Message" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <button class="reply-btn" type="submit" ><span>send message</span></button>
+                            <p class="form-messege"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blog-sidebar right">
+                    <div class="single-blog-widget mb-47">
+                        <h3>search</h3>
+                        <div class="blog-search">
+                            <form id="search" action="#">
+                                <input type="search" placeholder="Search..." name="search" />
+                                <button type="submit">
+                                    <span><i class="fa fa-search"></i></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="single-blog-widget mb-47">
+                        <h3>categories</h3>
+                        <ul>
+                            @foreach (var blogCategory in Model.Blog.BlogCategories)
+                            {
+                                <li><a>@blogCategory.Category.Name</a></li>
+                            }              
+                        </ul>
+                    </div>
+                    <div class="single-blog-widget mb-47">
+                        <div class="single-blog-banner">
+                            <a href="blog-details.html" id="blog"><img src="~/img/blog/blog-img.jpg" alt="blog"></a>
+                            <h2>best<br> eductaion<br> theme</h2>
+                        </div>
+                    </div>
+                    <div class="single-blog-widget mb-47">
+                        <h3>latest post</h3>
+                        @foreach (var latestPost in Model.Blogs)
+                        {
+                            <div style="display:flex" class="single-post mb-30">
+                                <div style="height:84px; width:95px; overflow:hidden" class="single-post-img">
+                                    <a href="blog-details.html">
+                                        <img src="~/img/@latestPost.BlogImage.Photo" alt="post">
+                                        <div class="blog-hover">
+                                            <i class="fa fa-link"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="single-post-content">
+                                    <h4><a href="blog-details.html">@latestPost.Name</a></h4>
+                                    <p>By @latestPost.AuthorFullName  /  @latestPost.PostDate?.ToString("MMMM dd, yyyy")</p>
+                                </div>
+                            </div>
+                        }
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

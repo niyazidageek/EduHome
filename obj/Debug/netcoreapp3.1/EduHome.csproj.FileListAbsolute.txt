@@ -7,9 +7,13 @@
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/EduHome.pdb
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/EduHome.Views.dll
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/EduHome.Views.pdb
+/Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/EntityFramework.SqlServer.dll
+/Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/EntityFramework.dll
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/Humanizer.dll
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/JetBrains.Annotations.dll
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/MailKit.dll
+/Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/Microsoft.AspNet.Identity.Core.dll
+/Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/Microsoft.AspNet.Identity.EntityFramework.dll
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.Internal.dll
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -61,7 +65,6 @@
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.pdb
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll
 /Users/niyazibabayev/Projects/EduHome/EduHome/bin/Debug/netcoreapp3.1/runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll
-/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/EduHome.csproj.AssemblyReference.cache
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/EduHome.GeneratedMSBuildEditorConfig.editorconfig
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/EduHome.AssemblyInfoInputs.cache
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/EduHome.AssemblyInfo.cs
@@ -81,6 +84,9 @@
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Blog/CreateBlog.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Blog/EditBlog.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Blog/Index.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/BlogComment/DetailComment.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/BlogComment/Index.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/BlogComment/ViewComment.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Category/CreateCategory.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Category/EditCategory.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Category/Index.cshtml.g.cs
@@ -115,6 +121,7 @@
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/About/Index.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Account/Login.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Account/Register.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Blog/BlogDetail.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Blog/Index.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Contact/Index.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Course/Index.cshtml.g.cs
@@ -137,3 +144,4 @@
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/EduHome.dll
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/EduHome.pdb
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/EduHome.genruntimeconfig.cache
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/EduHome.csproj.AssemblyReference.cache

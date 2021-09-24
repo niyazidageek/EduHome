@@ -1,0 +1,23 @@
+﻿@model Blog
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th> Comment Id </th>
+            <th> Author Email </th>
+            <th> Delete </th>
+            <th> Details </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var comment in Model.Comments)
+        {
+            <tr>
+                <td> @comment.Id </td>
+                <td> @comment.Mail </td>
+                <td> <a asp-action="DeleteComment" asp-route-id="@comment.Id" class="btn btn-danger"> Delete </a> </td>
+                <td> <a asp-action="DetailComment" asp-route-id="@comment.Id" class="btn btn-info"> Details </a> </td>
+            </tr>
+        }
+    </tbody>
+</table>

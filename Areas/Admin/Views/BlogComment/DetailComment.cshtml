@@ -1,0 +1,33 @@
+﻿@model Comment
+<div class="row justify-content-center">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create course</h4>
+                <div class="forms-sample">
+                    <div class="form-group">
+                        <span>Id</span>
+                        <h1>@Model.FullName</h1>
+                    </div>
+                    <div class="form-group">
+                        <span>Id</span>
+                        <h1>@Model.Id</h1>
+                    </div>
+                    <div class="form-group">
+                        <span>Sender</span>
+                        <h3>@Model.Mail</h3>
+                    </div>
+                    <div class="form-group">
+                        <span>Subject</span>
+                        <h4>@Model.Subject</h4>
+                    </div>
+                    <div class="form-group">
+                        <span>Message</span>
+                        <p>@Model.Message</p>
+                    </div>
+                    <a asp-action="ViewComment" asp-route-id="@Model.Blog.Id" class="btn btn-light">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
