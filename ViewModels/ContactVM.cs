@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using EduHome.Models;
 
 namespace EduHome.ViewModels
 {
@@ -13,5 +14,6 @@ namespace EduHome.ViewModels
         public string Subject { get; set; }
         [Required, StringLength(2000)]
         public string Message { get; set; }
+        public Contact Contact { get; set; }
     }
 }

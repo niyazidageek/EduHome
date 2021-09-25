@@ -34,5 +34,7 @@ namespace EduHome.DAL
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Subscriber> Subscribers { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<Testimonal> Testimonal { get; set; }
+        public DbSet<Contact> Contact { get; set; }
     }
 }

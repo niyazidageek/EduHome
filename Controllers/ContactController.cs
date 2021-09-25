@@ -21,7 +21,13 @@ namespace EduHome.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var contact = _context.Contact.ToList().ElementAt(0);
+            ContactVM contactVM = new ContactVM
+            {
+                Contact = contact
+            };
+
+            return View(contactVM);
         }
 
         [HttpPost]

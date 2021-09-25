@@ -1,0 +1,40 @@
+﻿@model ContactVM
+
+<div class="row justify-content-center">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create course</h4>
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Address">Address</label>
+                        <input asp-for="Address" class="form-control" placeholder="Address" value="@Model.Address">
+                        <span class="text-danger" asp-validation-for="Address"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Phone1">Phone 1</label>
+                        <input asp-for="Phone1" class="form-control" placeholder="Phone 1" value="@Model.Phone1">
+                        <span class="text-danger" asp-validation-for="Phone1"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Phone2">Phone 2</label>
+                        <input asp-for="Phone2" class="form-control" placeholder="Phone 2" value="@Model.Phone2">
+                        <span class="text-danger" asp-validation-for="Phone2"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="WebSite">Website</label>
+                        <input asp-for="WebSite" class="form-control" placeholder="Website" value="@Model.WebSite">
+                        <span class="text-danger" asp-validation-for="WebSite"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email">Email</label>
+                        <input asp-for="Email" class="form-control" placeholder="Email" value="@Model.Email">
+                        <span class="text-danger" asp-validation-for="Email"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button asp-action="Index" class="btn btn-light">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

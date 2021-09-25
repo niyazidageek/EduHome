@@ -1,0 +1,22 @@
+﻿@model Testimonal
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th> Fullname </th>
+                <th> Position </th>
+                <th> Photo </th>
+                <th> Edit </th>
+                <th> Details </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> @Model.Fullname </td>
+                <td> @Model.Position </td>
+                <td> <img src="~/img/@Model.PersonPhoto" /> </td>
+                <td> <a asp-action="EditTestimonal" class="btn btn-primary"> Edit </a> </td>
+                <td> <a asp-action="ViewTestimonal" class="btn btn-info"> Details </a> </td>
+            </tr>      
+        </tbody>
+    </table>
