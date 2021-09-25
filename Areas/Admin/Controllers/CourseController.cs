@@ -267,7 +267,6 @@ namespace EduHome.Areas.Admin.Controllers
                 FileHelper.CreateFile(courseAdminVM.Photo.FileName, _env.WebRootPath, "img", courseAdminVM.Photo);
                 existingImage.Photo = FileHelper.UniqueFileName;
             }
-
             
 
             var existingCourseCategories = await _context.CourseCategories.Select(x=>x).Where(c=>c.CourseId == course.Id).ToListAsync();
@@ -300,6 +299,17 @@ namespace EduHome.Areas.Admin.Controllers
             _context.SaveChanges();
 
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult ViewCourse(int id)
+        {
+            var course = _context.Courses.Where(c => c.IsDeleted == false)
+                .Include(c => c.CourseCategories)
+                .ThenInclude(c => c.Category)
+                .Include(c => c.CourseImage)
+                .FirstOrDefault(c => c.Id == id);
+
+            return View(course);
         }
     }
 }

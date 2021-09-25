@@ -37,7 +37,7 @@
                 <td> <img src="~/img/@_event.EventImage.Photo" /> </td>
                 <td> <a asp-action="DeleteEvent" asp-route-id="@_event.Id" class="btn btn-danger"> Delete </a> </td>
                 <td> <a asp-action="EditEvent" asp-route-id="@_event.Id" class="btn btn-primary"> Edit </a> </td>
-                <td> <a class="btn btn-info"> Details </a> </td>
+                <td> <a asp-action="ViewEvent" asp-route-id="@_event.Id" class="btn btn-info"> Details </a> </td>
             </tr>
         }
     </tbody>

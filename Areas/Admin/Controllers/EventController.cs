@@ -373,5 +373,19 @@ namespace EduHome.Areas.Admin.Controllers
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult ViewEvent(int id)
+        {
+            var _event = _context.Events.Where(e => e.IsDeleted == false)
+                .Include(e => e.EventImage)
+                .Include(e => e.EventCategories)
+                .ThenInclude(e => e.Category)
+                .Include(e => e.SpeakerEvents)
+                .ThenInclude(e => e.Speaker)
+                .ThenInclude(e=>e.SpeakerImage)
+                .FirstOrDefault(e => e.Id == id);
+
+            return View(_event);
+        }
     }
 }

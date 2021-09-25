@@ -9,7 +9,6 @@
             <th> Photo </th>
             <th> Delete </th>
             <th> Edit </th>
-            <th> Details </th>
         </tr>
     </thead>
     <tbody>
@@ -21,7 +20,6 @@
                 <td> <img src="~/img/@teacher.TeacherImage.Photo" /> </td>
                 <td> <a asp-action="DeleteTeacher" asp-route-id="@teacher.Id" class="btn btn-danger"> Delete </a> </td>
                 <td> <a asp-action="EditTeacher" asp-route-id="@teacher.Id" class="btn btn-primary"> Edit </a> </td>
-                <td> <a class="btn btn-info"> Details </a> </td>
             </tr>
         }
     </tbody>

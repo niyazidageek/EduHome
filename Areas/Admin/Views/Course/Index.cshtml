@@ -25,22 +25,7 @@
                 <td> <img src="~/img/@course.CourseImage.Photo" /> </td>
                 <td> <a asp-action="DeleteCourse" asp-route-id="@course.Id" class="btn btn-danger"> Delete </a> </td>
                 <td> <a asp-action="EditCourse" asp-route-id="@course.Id" class="btn btn-primary"> Edit </a> </td>
-                <td> <a class="btn btn-info"> Details </a> </td>
-                @*<td> @course.Name </td>
-                <td> @course.Title </td>
-                <td> @course.Description </td>
-                <td> @course.ApplicationRule </td>
-                <td> @course.Certification </td>
-                <td> @course.StartDate?.ToString("dd/MMMM/yyyy") </td>
-                <td> @course.Duration </td>
-                <td> @course.ClassDuration </td>
-                <td> @course.SkillLevel </td>
-                <td> @course.Language </td>
-                <td> @course.StudentCapacity.ToString() </td>
-                <td> @course.Assesment </td>
-                <td> @course.Fee </td>
-                <td> <img src="~/img/@course.CourseImage.Photo" /> </td>
-                <td> @String.Join(", ", categories.ToArray()) </td>*@           
+                <td> <a asp-action="ViewCourse" asp-route-id="@course.Id" class="btn btn-info"> Details </a> </td>
             </tr>
         }
     </tbody>

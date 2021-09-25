@@ -7,7 +7,6 @@
             <th> Category name</th>
             <th> Delete </th>
             <th> Edit </th>
-            <th> Details </th>
         </tr>
     </thead>
     <tbody>
@@ -17,7 +16,6 @@
                 <td> @category.Name </td>
                 <td> <a asp-action="DeleteCategory" asp-route-id="@category.Id" class="btn btn-danger"> Delete </a> </td>
                 <td> <a asp-action="EditCategory" asp-route-id="@category.Id" class="btn btn-primary"> Edit </a> </td>
-                <td> <a class="btn btn-info"> Details </a> </td>
             </tr>
         }
     </tbody>

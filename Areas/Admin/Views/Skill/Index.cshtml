@@ -7,7 +7,6 @@
             <th> Skill name</th>
             <th> Delete </th>
             <th> Edit </th>
-            <th> Details </th>
         </tr>
     </thead>
     <tbody>
@@ -17,7 +16,6 @@
                 <td> @skill.Name </td>
                 <td> <a asp-action="DeleteSkill" asp-route-id="@skill.Id" class="btn btn-danger"> Delete </a> </td>
                 <td> <a asp-action="EditSkill" asp-route-id="@skill.Id" class="btn btn-primary"> Edit </a> </td>
-                <td> <a class="btn btn-info"> Details </a> </td>
             </tr>
         }
     </tbody>

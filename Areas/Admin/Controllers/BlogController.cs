@@ -253,5 +253,17 @@ namespace EduHome.Areas.Admin.Controllers
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult ViewBlog(int id)
+        {
+            var blog = _context.Blogs.Where(b => b.IsDeleted == false)
+                .Include(b => b.BlogImage)
+                .Include(b => b.Comments)
+                .Include(b => b.BlogCategories)
+                .ThenInclude(b => b.Category)
+                .FirstOrDefault(b => b.Id == id);
+
+            return View(blog);
+        }
     }
 }

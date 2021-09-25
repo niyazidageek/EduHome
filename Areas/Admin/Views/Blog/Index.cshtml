@@ -33,7 +33,7 @@
                 <td> <img src="~/img/@blog.BlogImage.Photo" /> </td>
                 <td> <a asp-action="DeleteBlog" asp-route-id="@blog.Id" class="btn btn-danger"> Delete </a> </td>
                 <td> <a asp-action="EditBlog" asp-route-id="@blog.Id" class="btn btn-primary"> Edit </a> </td>
-                <td> <a class="btn btn-info"> Details </a> </td>
+                <td> <a asp-action="ViewBlog" asp-route-id="@blog.Id" class="btn btn-info"> Details </a> </td>
             </tr>
         }
     </tbody>

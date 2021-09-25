@@ -1,0 +1,81 @@
+﻿@model Course
+<div class="row justify-content-center">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create course</h4>
+                <div class="forms-sample">
+                    <div class="form-group">
+                        <span>Id</span>
+                        <h1>@Model.Id</h1>
+                    </div>
+                    <div class="form-group">
+                        <span>Name</span>
+                        <h3>@Model.Name</h3>
+                    </div>
+                    <div class="form-group">
+                        <span>Title</span>
+                        <p>@Model.Title</p>
+                    </div>
+                    <div class="form-group">
+                        <span>Description</span>
+                        <h4>@Model.Description</h4>
+                    </div>
+                    <div class="form-group">
+                        <span>Start date</span>
+                        <p>@Model.StartDate?.ToString("h:mm tt")</p>
+                    </div>
+                    <div class="form-group">
+                        <span>Duration</span>
+                        <p>@Model.Duration</p>
+                    </div>
+                    <div class="form-group">
+                        <span>Certification</span>
+                        <p>@Model.Certification</p>
+                    </div>
+                    <div class="form-group">
+                        <span>ApplicationRule</span>
+                        <p>@Model.ApplicationRule</p>
+                    </div>
+                    <div class="form-group">
+                        <span>Assesment</span>
+                        <p>@Model.Assesment</p>
+                    </div>
+                    <div class="form-group">
+                        <span>ClassDuration</span>
+                        <p>@Model.ClassDuration</p>
+                    </div>
+                    <div class="form-group">
+                        <span>Fee</span>
+                        <p>@Model.Fee</p>
+                    </div>
+                    <div class="form-group">
+                        <span>Language</span>
+                        <p>@Model.Language</p>
+                    </div>
+                    <div class="form-group">
+                        <span>Skill Level</span>
+                        <p>@Model.SkillLevel</p>
+                    </div>
+                    <div class="form-group">
+                        <span>Student Capacity</span>
+                        <p>@Model.StudentCapacity</p>
+                    </div>
+                    <div class="form-group">
+                        <span>Categories:</span>
+                        @foreach (var courseCategory in Model.CourseCategories)
+                        {
+                            <h5>@courseCategory.Category.Name</h5>
+                            <br />
+                        }
+                    </div>
+                    <div class="form-group">
+                        <span>Photo</span>
+                        <img src="~/img/@Model.CourseImage.Photo" />
+                    </div>
+                    <a asp-action="Index" class="btn btn-light">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
