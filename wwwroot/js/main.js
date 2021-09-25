@@ -1,6 +1,36 @@
+/*------------------------------------
+    Search
+--------------------------------------*/
+
+
 (function ($) {
 "use strict";  
-    
+
+
+let input = document.getElementById("global-search");
+
+let matches = document.getElementById("matches");
+
+input.addEventListener('keyup', () => {
+    let filteredInput = input.value.trim();
+
+    if (filteredInput == "") {
+        let div = document.createElement('div');
+        div.innerHTML = "Nothing to search";
+        $('#matches').empty();
+        $('#matches').append(div);
+    }
+    else {
+        fetch(`https://localhost:5001/Search/GetSearchResult?input=${filteredInput}`)
+            .then((response) => { return response.text(); })
+            .then((result) => {
+                $('#matches').empty();
+                $('#matches').html(result);
+            });
+    }   
+});
+
+
 /*------------------------------------
 	Sticky Menu 
 --------------------------------------*/
