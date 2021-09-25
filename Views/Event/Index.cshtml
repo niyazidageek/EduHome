@@ -29,7 +29,7 @@
             {
                 <div class="single-event mb-60 col-sm-4" style="height:470px">
                     <div class="event-img">
-                        <a href="event-details.html">
+                        <a asp-controller="Event" asp-action="EventDetail" asp-route-id="@item.Id">
                             <img src="~/img/@item.EventImage.Photo" alt="event">
                             <div class="course-hover">
                                 <i class="fa fa-link"></i>
@@ -40,13 +40,13 @@
                         </div>
                     </div>
                     <div class="event-content text-left">
-                        <h4><a href="event-details.html">@item.Name</a></h4>
+                        <h4><a asp-controller="Event" asp-action="EventDetail" asp-route-id="@item.Id">@item.Name</a></h4>
                         <ul>
                             <li><span>time:</span> @item.StartTime?.ToString("h:mm tt") - @item.EndTime?.ToString("h:mm tt")</li>
                             <li><span>venue:</span> @item.Venue</li>
                         </ul>
                         <div class="event-content-right">
-                            <a class="default-btn" href="event-details.html">join now</a>
+                            <a class="default-btn" asp-controller="Event" asp-action="EventDetail" asp-route-id="@item.Id">join now</a>
                         </div>
                     </div>
                 </div>

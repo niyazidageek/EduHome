@@ -153,3 +153,5 @@
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Areas/Admin/Views/Contact/Index.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/FooterContact/Default.cshtml.g.cs
 /Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Teacher/TeacherDetail.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Event/EventDetail.cshtml.g.cs
+/Users/niyazibabayev/Projects/EduHome/EduHome/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Components/LatestBlog/Default.cshtml.g.cs

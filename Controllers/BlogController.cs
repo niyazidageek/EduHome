@@ -37,16 +37,11 @@ namespace EduHome.ViewComponents
 
         public async Task<IActionResult> BlogDetail(int id)
         {
-            var Blogs = await _context.Blogs.Where(e => e.IsDeleted == false)
-                .Take(3)
-                .Include(b => b.BlogImage)
-                .Include(b => b.Comments.Where(c => c.IsDeleted == false))
-                .Include(b=>b.BlogCategories)
-                .ThenInclude(b=>b.Category)
-                .ToListAsync();
 
             var blog = await _context.Blogs.Where(b => b.IsDeleted == false)
                 .Include(b => b.BlogImage)
+                .Include(b=>b.BlogCategories)
+                .ThenInclude(b=>b.Category)
                 .Include(b => b.Comments.Where(c => c.IsDeleted == false))
                 .FirstOrDefaultAsync(b => b.Id == id);
 
@@ -54,8 +49,7 @@ namespace EduHome.ViewComponents
 
             BlogDetailVM blogDetailVM = new BlogDetailVM
             {
-                Blog = blog,
-                Blogs = Blogs
+                Blog = blog
             };
 
             return View(blogDetailVM);
@@ -64,16 +58,11 @@ namespace EduHome.ViewComponents
         [HttpPost]
         public async Task<IActionResult> BlogDetail(BlogDetailVM blogDetailVM, int blogId)
         {
-            var Blogs = await _context.Blogs.Where(e => e.IsDeleted == false)
-                .Take(3)
-                .Include(b => b.BlogImage)
-                .Include(b => b.Comments.Where(c => c.IsDeleted == false))
-                .Include(b => b.BlogCategories)
-                .ThenInclude(b => b.Category)
-                .ToListAsync();
 
             var blog = await _context.Blogs.Where(b => b.IsDeleted == false)
                 .Include(b => b.BlogImage)
+                .Include(b=>b.BlogCategories)
+                .ThenInclude(b => b.Category)
                 .Include(b => b.Comments.Where(c => c.IsDeleted == false))
                 .FirstOrDefaultAsync(b => b.Id == blogId);
 
@@ -81,8 +70,7 @@ namespace EduHome.ViewComponents
 
             BlogDetailVM bvm = new BlogDetailVM
             {
-                Blog = blog,
-                Blogs = Blogs
+                Blog = blog
             };
 
 

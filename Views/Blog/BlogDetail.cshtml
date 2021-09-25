@@ -34,7 +34,7 @@
                     <div class="reply-area">
                         <h3>LEAVE A COMMENT</h3>
                         <form asp-controller="Blog" asp-action="BlogDetail" method="post">
-                            
+
                             <div class="row">
                                 <div asp-validation-summary="ModelOnly" class="alert-danger"></div>
                                 <div class="col-md-12">
@@ -57,7 +57,7 @@
                                     <span asp-validation-for="@Model.Comment.Message" class="text-danger"></span>
                                 </div>
                             </div>
-                            <button class="reply-btn" type="submit" ><span>send message</span></button>
+                            <button class="reply-btn" type="submit"><span>send message</span></button>
                             <p class="form-messege"></p>
                         </form>
                     </div>
@@ -82,38 +82,20 @@
                             @foreach (var blogCategory in Model.Blog.BlogCategories)
                             {
                                 <li><a>@blogCategory.Category.Name</a></li>
-                            }              
+                            }
                         </ul>
                     </div>
                     <div class="single-blog-widget mb-47">
                         <div class="single-blog-banner">
-                            <a href="blog-details.html" id="blog"><img src="~/img/blog/blog-img.jpg" alt="blog"></a>
+                            <a asp-controller="Blog" asp-action="Index"><img src="~/img/blog/blog-img.jpg" alt="blog"></a>
                             <h2>best<br> eductaion<br> theme</h2>
                         </div>
                     </div>
-                    <div class="single-blog-widget mb-47">
-                        <h3>latest post</h3>
-                        @foreach (var latestPost in Model.Blogs)
-                        {
-                            <div style="display:flex" class="single-post mb-30">
-                                <div style="height:84px; width:95px; overflow:hidden" class="single-post-img">
-                                    <a href="blog-details.html">
-                                        <img src="~/img/@latestPost.BlogImage.Photo" alt="post">
-                                        <div class="blog-hover">
-                                            <i class="fa fa-link"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="single-post-content">
-                                    <h4><a href="blog-details.html">@latestPost.Name</a></h4>
-                                    <p>By @latestPost.AuthorFullName  /  @latestPost.PostDate?.ToString("MMMM dd, yyyy")</p>
-                                </div>
-                            </div>
-                        }
-                    
-                    </div>
+                    @await Component.InvokeAsync("LatestBlog")
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@await Component.InvokeAsync("Newsteller") 

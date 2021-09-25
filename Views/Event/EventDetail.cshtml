@@ -1,0 +1,96 @@
+﻿@using EduHome.Models
+@model EventDetailVM
+
+
+<div class="banner-area-wrapper">
+    <div class="banner-area text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="banner-content-wrapper">
+                        <div class="banner-content">
+                            <h2>event / details</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="event-details-area blog-area pt-150 pb-140">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="event-details">
+                    <div class="event-details-img">
+                        <img src="~/img/@Model.Photo" alt="event-details">
+                        <div class="event-date">
+                            <h3>@Model.StartTime?.ToString("dd") <span>@Model.StartTime?.ToString("MMM")</span></h3>
+                        </div>
+                    </div>
+                    <div class="event-details-content">
+                        <h2>@Model.Name</h2>
+                        <ul>
+                            <li><span>time : </span>@Model.StartTime?.ToString("h:mm tt") - @Model.EndTime?.ToString("h:mm tt")</li>
+                            <li><span>venue : </span>@Model.Venue</li>
+                        </ul>
+                        <p>
+                            @Model.Description
+                        </p>
+                        <div class="speakers-area fix">
+                            <h4>speakers</h4>
+                            @foreach (var speaker in Model.Speakers)
+                            {
+                                <div class="single-speaker">
+                                    <div class="speaker-img">
+                                        <img src="~/img/@speaker.SpeakerImage.Photo" alt="speaker">
+                                    </div>
+                                    <div class="speaker-name">
+                                        <h5>@speaker.Name</h5>
+                                        <p>@speaker.Position</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="blog-sidebar right">
+                    <div class="single-blog-widget mb-50">
+                        <h3>search</h3>
+                        <div class="blog-search">
+                            <form id="search" action="#">
+                                <input type="search" placeholder="Search..." name="search" />
+                                <button type="submit">
+                                    <span><i class="fa fa-search"></i></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <h3>categories</h3>
+                        <ul>
+                            @foreach (var category in Model.Categories)
+                            {
+                                <li><a>@category</a></li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="single-blog-widget mb-50">
+                        <div class="single-blog-banner">
+                            <a href="blog-details.html" id="blog"><img src="~/img/blog/blog-img.jpg" alt="blog"></a>
+                            <h2>best<br> eductaion<br> theme</h2>
+                        </div>
+                    </div>
+                    @await Component.InvokeAsync("LatestBlog")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@await Component.InvokeAsync("Newsteller") 

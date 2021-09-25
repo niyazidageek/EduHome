@@ -1,0 +1,23 @@
+﻿@using EduHome.Models
+@model List<Blog>
+
+@foreach (var latestPost in Model)
+{
+    <div class="single-blog-widget mb-47">
+        <h3>latest post</h3>
+        <div style="display:flex" class="single-post mb-30">
+            <div style="height:84px; width:95px; overflow:hidden" class="single-post-img">
+                <a href="blog-details.html">
+                    <img src="~/img/@latestPost.BlogImage.Photo" alt="post">
+                    <div class="blog-hover">
+                        <i class="fa fa-link"></i>
+                    </div>
+                </a>
+            </div>
+            <div class="single-post-content">
+                <h4><a href="blog-details.html">@latestPost.Name</a></h4>
+                <p>By @latestPost.AuthorFullName  /  @latestPost.PostDate?.ToString("MMMM dd, yyyy")</p>
+            </div>
+        </div>
+    </div>
+}

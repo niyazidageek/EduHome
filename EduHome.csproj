@@ -66,6 +66,7 @@
     <None Remove="Areas\Admin\Views\Testimonal\" />
     <None Remove="Areas\Admin\Views\Contact\" />
     <None Remove="Views\Shared\Components\ContactFooter\" />
+    <None Remove="Views\Shared\Components\LatestBlog\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.10" />
@@ -135,6 +136,7 @@
     <Folder Include="Areas\Admin\Views\Testimonal\" />
     <Folder Include="Areas\Admin\Views\Contact\" />
     <Folder Include="Views\Shared\Components\FooterContact\" />
+    <Folder Include="Views\Shared\Components\LatestBlog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />
