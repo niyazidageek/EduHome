@@ -26,6 +26,11 @@ namespace EduHome.Areas.Admin.Controllers
             _roleManager = roleManager;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         public IActionResult Register()
         {
             return View();
@@ -60,42 +65,42 @@ namespace EduHome.Areas.Admin.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public IActionResult Login()
-        {
-            if (!User.Identity.IsAuthenticated) return NotFound();
-            return View();
-        }
+        //public IActionResult Login()
+        //{
+        //    if (!User.Identity.IsAuthenticated) return NotFound();
+        //    return View();
+        //}
 
-        [HttpPost]
-        [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Login(LoginAdminVM loginVM)
-        {
-            if (!User.Identity.IsAuthenticated) return NotFound();
-            if (!ModelState.IsValid) return View(loginVM);
+        //[HttpPost]
+        //[AutoValidateAntiforgeryToken]
+        //public async Task<IActionResult> Login(LoginAdminVM loginVM)
+        //{
+        //    if (!User.Identity.IsAuthenticated) return NotFound();
+        //    if (!ModelState.IsValid) return View(loginVM);
 
-            AppUser user = await _userManager.FindByNameAsync(loginVM.Username);
+        //    AppUser user = await _userManager.FindByNameAsync(loginVM.Username);
 
-            if (user == null)
-            {
-                ModelState.AddModelError("", "Username or password is not correct");
-                return View(loginVM);
-            }
+        //    if (user == null)
+        //    {
+        //        ModelState.AddModelError("", "Username or password is not correct");
+        //        return View(loginVM);
+        //    }
 
-            if (!user.IsEnabled)
-            {
-                ModelState.AddModelError("", "Your account is blocked");
-                return View(loginVM);
-            }
+        //    if (!user.IsEnabled)
+        //    {
+        //        ModelState.AddModelError("", "Your account is blocked");
+        //        return View(loginVM);
+        //    }
 
-            Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, loginVM.RememberMe, false);
+        //    Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, loginVM.RememberMe, false);
 
-            if (!result.Succeeded)
-            {
-                ModelState.AddModelError("", "Username or password is not correct");
-                return View(loginVM);
-            }
-            return RedirectToAction("Index", "Home");
-        }
+        //    if (!result.Succeeded)
+        //    {
+        //        ModelState.AddModelError("", "Username or password is not correct");
+        //        return View(loginVM);
+        //    }
+        //    return RedirectToAction("Index", "Home");
+        //}
 
         public async Task<IActionResult> Logout()
         {

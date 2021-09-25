@@ -32,5 +32,40 @@ namespace EduHome.Controllers
 
             return View(courseVM);
         }
+
+        public IActionResult CourseDetail(int id)
+        {
+            var course = _context.Courses.Where(c => c.IsDeleted == false)
+                .Include(c => c.CourseCategories)
+                .ThenInclude(c => c.Category)
+                .Include(c => c.CourseImage)
+                .FirstOrDefault(c=>c.Id == id);
+
+            List<string> Categories = new List<string>();
+
+            foreach (var courseCategory in course.CourseCategories)
+            {
+                Categories.Add(courseCategory.Category.Name);
+            }
+
+            CourseDetailVM courseDetailVM = new CourseDetailVM()
+            {
+                Categories = Categories,
+                Name = course.Name,
+                Language = course.Language,
+                ApplicationRule = course.ApplicationRule,
+                Fee = course.Fee,
+                Assesment = course.Assesment,
+                Certification = course.Certification,
+                ClassDuration = course.ClassDuration,
+                StudentCapacity = course.StudentCapacity,
+                Description = course.Description,
+                Duration = course.Description,
+                StartDate = course.StartDate,
+                SkillLevel = course.SkillLevel,
+                Title = course.Title
+            };
+            return View(courseDetailVM);
+        }
     }
 }

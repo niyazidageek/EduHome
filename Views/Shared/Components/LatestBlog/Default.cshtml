@@ -7,7 +7,7 @@
         <h3>latest post</h3>
         <div style="display:flex" class="single-post mb-30">
             <div style="height:84px; width:95px; overflow:hidden" class="single-post-img">
-                <a href="blog-details.html">
+                <a asp-controller="Blog" asp-action="BlogDetail" asp-route-id="@latestPost.Id">
                     <img src="~/img/@latestPost.BlogImage.Photo" alt="post">
                     <div class="blog-hover">
                         <i class="fa fa-link"></i>
@@ -15,7 +15,7 @@
                 </a>
             </div>
             <div class="single-post-content">
-                <h4><a href="blog-details.html">@latestPost.Name</a></h4>
+                <h4><a asp-controller="Blog" asp-action="BlogDetail" asp-route-id="@latestPost.Id">@latestPost.Name</a></h4>
                 <p>By @latestPost.AuthorFullName  /  @latestPost.PostDate?.ToString("MMMM dd, yyyy")</p>
             </div>
         </div>

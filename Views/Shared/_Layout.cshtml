@@ -1,4 +1,6 @@
-﻿<!doctype html>
+﻿@using Microsoft.AspNetCore.Authorization;
+@using Microsoft.AspNetCore.Identity;
+<!doctype html>
 <html class="no-js" lang="en">
 
 <head>
@@ -37,8 +39,16 @@
                             <ul>
                                 @if (User.Identity.IsAuthenticated)
                                 {
-                                    <li> <a>Hi @User.Identity.Name !</a></li>
-                                    <li><a asp-controller="Account" asp-action="Logout">logout</a></li>
+                                    if (User.IsInRole("Admin"))
+                                    {
+                                        <li> <a asp-area="Admin" asp-controller="Home" asp-action="Index">Hi @User.Identity.Name !</a></li>
+                                        <li><a asp-controller="Account" asp-action="Logout">logout</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li> <a>Hi @User.Identity.Name !</a></li>
+                                        <li><a asp-controller="Account" asp-action="Logout">logout</a></li>
+                                    }
                                 }
                                 else
                                 {
@@ -61,7 +71,7 @@
                     </div>
                     <div class="col-md-9 col-sm-9 col-xs-6">
                         <div class="content-wrapper text-right">
-                           
+
                             <div class="main-menu">
                                 <nav>
                                     <ul>
@@ -85,7 +95,7 @@
                                     </ul>
                                 </nav>
                             </div>
-                            
+
                             <div class="search-btn">
                                 <ul data-toggle="dropdown" class="header-search search-toggle">
                                     <li class="search-menu">
@@ -103,7 +113,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="col-xs-12">
@@ -161,7 +171,7 @@
                             </ul>
                         </div>
                     </div>
-                    @await Component.InvokeAsync("FooterContact") 
+                    @await Component.InvokeAsync("FooterContact")
                 </div>
             </div>
         </div>
@@ -187,3 +197,4 @@
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 </body>
+</html>

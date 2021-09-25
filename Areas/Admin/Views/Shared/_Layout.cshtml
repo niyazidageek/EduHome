@@ -36,6 +36,48 @@
         <div class="container-fluid page-body-wrapper">
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
+                    <li class="nav-item nav-category">
+                        <a asp-controller="Account" asp-action="Index" class="nav-link">Accounts</a>
+                    </li>
+                    <li class="nav-item nav-category">
+                        <a asp-controller="Blog" asp-action="Index" class="nav-link">Blogs</a>
+                    </li>
+                    <li class="nav-item nav-category">
+                        <a asp-controller="BlogComment" asp-action="Index" class="nav-link">Blog Comments</a>
+                    </li>
+                    <li class="nav-item nav-category">
+                        <a asp-controller="Category" asp-action="Index" class="nav-link">Category</a>
+                    </li>
+                    <li class="nav-item nav-category">
+                        <a asp-controller="Contact" asp-action="Index" class="nav-link">Contact</a>
+                    </li>
+                    <li class="nav-item nav-category">
+                        <a asp-controller="Course" asp-action="Index" class="nav-link">Courses</a>
+                    </li>
+                    <li class="nav-item nav-category">
+                        <a asp-controller="Event" asp-action="Index" class="nav-link">Events</a>
+                    </li>
+                    <li class="nav-item nav-category">
+                        <a asp-controller="Message" asp-action="Index" class="nav-link">Messages</a>
+                    </li>
+                    <li class="nav-item nav-category">
+                        <a asp-controller="NoticeBoard" asp-action="Index" class="nav-link">Notice Board</a>
+                    </li>
+                    <li class="nav-item nav-category">
+                        <a asp-controller="Skill" asp-action="Index" class="nav-link">Skills</a>
+                    </li>
+                    <li class="nav-item nav-category">
+                        <a asp-controller="Slider" asp-action="Index" class="nav-link">Slider</a>
+                    </li>
+                    <li class="nav-item nav-category">
+                        <a asp-controller="Speaker" asp-action="Index" class="nav-link">Speakers</a>
+                    </li>
+                    <li class="nav-item nav-category">
+                        <a asp-controller="Teacher" asp-action="Index" class="nav-link">Teachers</a>
+                    </li>
+                    <li class="nav-item nav-category">
+                        <a asp-controller="Testimonal" asp-action="Index" class="nav-link">Testimonal</a>
+                    </li>
                 </ul>
             </nav>
             <div class="main-panel">
@@ -59,3 +101,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js" integrity="sha512-FHZVRMUW9FsXobt+ONiix6Z0tIkxvQfxtCSirkKc5Sb4TKHmqq1dZa8DphF0XqKb3ldLu/wgMa8mT6uXiLlRlw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @RenderSection("SkillScript", false)
 </body>
+</html>
