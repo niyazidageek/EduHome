@@ -60,7 +60,7 @@ namespace EduHome.Controllers
                 ClassDuration = course.ClassDuration,
                 StudentCapacity = course.StudentCapacity,
                 Description = course.Description,
-                Duration = course.Description,
+                Duration = course.Duration,
                 StartDate = course.StartDate,
                 SkillLevel = course.SkillLevel,
                 Title = course.Title

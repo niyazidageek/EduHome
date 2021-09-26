@@ -94,7 +94,7 @@ namespace EduHome.Areas.Admin.Controllers
                 Experience = teacherVM.Experience,
                 Hobbies = teacherVM.Hobbies,
                 Faculty = teacherVM.Faculty,
-                IsDeleted = true,
+                IsDeleted = false,
                 TeacherImage = new TeacherImage { Photo = FileHelper.UniqueFileName },
                 TeacherContact = new TeacherContact
                 {
@@ -297,6 +297,6 @@ namespace EduHome.Areas.Admin.Controllers
             teacher.IsDeleted = true;
             _context.SaveChanges(); 
             return RedirectToAction(nameof(Index));
-        }
+        }  
     }
 }

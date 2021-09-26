@@ -12,9 +12,9 @@ namespace EduHome.Areas.Admin.ViewModels
         public string Fullname { get; set; }
         [Required, StringLength(50)]
         public string Position { get; set; }
-        [Required, StringLength(500)]
+        [Required, StringLength(1000)]
         public string Info { get; set; }
-        [Required, StringLength(50)]
+        [Required, StringLength(500)]
         public string Degree { get; set; }
         [Required, StringLength(50)]
         public string Experience { get; set; }
