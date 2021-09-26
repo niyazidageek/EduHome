@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-md-8 col-sm-8 col-xs-12">
                         <div class="header-top-left">
-                            <p>HAVE ANY QUESTION ?  +880 5698  598  6587</p>
+                            <p>HAVE ANY QUESTION ?  @await Component.InvokeAsync("PhoneNumber") </p>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12">
@@ -66,7 +66,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="logo">
-                            <a asp-controller="Home" asp-action="Index"><img src="~/img/logo/logo2.png" alt="eduhome" /></a>
+                            <a asp-controller="Home" asp-action="Index">@await Component.InvokeAsync("Logo")</a>
                         </div>
                     </div>
                     <div class="col-md-9 col-sm-9 col-xs-6">
@@ -137,9 +137,8 @@
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="single-widget pr-60">
                             <div class="footer-logo pb-25">
-                                <a asp-controller="Home" asp-action="Index"><img src="~/img/logo/footer-logo.png" alt="eduhome"></a>
+                                <a asp-controller="Home" asp-action="Index">@await Component.InvokeAsync("Logo")</a>
                             </div>
-                            <p>I must explain to you how all this mistaken idea of denoung pleure and praising pain was born and give you a coete account of the system. </p>
                             <div class="footer-social">
                                 <ul>
                                     <li><a href="https://www.facebook.com/devitems/?ref=bookmarks"><i class="zmdi zmdi-facebook"></i></a></li>

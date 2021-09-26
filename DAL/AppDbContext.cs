@@ -36,5 +36,6 @@ namespace EduHome.DAL
         public DbSet<Message> Messages { get; set; }
         public DbSet<Testimonal> Testimonal { get; set; }
         public DbSet<Contact> Contact { get; set; }
+        public DbSet<Logo> Logo { get; set; }
     }
 }
