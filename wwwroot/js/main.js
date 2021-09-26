@@ -1,34 +1,87 @@
-/*------------------------------------
-    Search
---------------------------------------*/
-
-
 (function ($) {
 "use strict";  
 
+/*------------------------------------
+    Global Search
+--------------------------------------*/
 
 let input = document.getElementById("global-search");
 
 let matches = document.getElementById("matches");
 
-input.addEventListener('keyup', () => {
+    input.addEventListener('keyup', () => {
+    $('#matches').empty();
     let filteredInput = input.value.trim();
 
     if (filteredInput == "") {
         let div = document.createElement('div');
+        div.style.textAlign = "start";
         div.innerHTML = "Nothing to search";
-        $('#matches').empty();
+        
         $('#matches').append(div);
     }
     else {
-        fetch(`https://localhost:5001/Search/GetSearchResult?input=${filteredInput}`)
+        fetch(`https://localhost:5001/Search/GetGlobalSearchResult?input=${filteredInput}`)
             .then((response) => { return response.text(); })
             .then((result) => {
-                $('#matches').empty();
+                
                 $('#matches').html(result);
             });
     }   
 });
+
+/*------------------------------------
+    Courses Search 
+--------------------------------------*/
+
+    let coursesInput = document.getElementById("courses-search")
+
+    if (coursesInput != null) {
+        let coursesMatches = document.getElementById("courses-matches")
+
+        coursesInput.addEventListener('keyup', () => {
+            $('#courses-matches').empty();
+            let filteredInput = coursesInput.value.trim();
+
+            if (filteredInput == "") {
+                $('#courses-matches').empty();
+            }
+            else {
+                fetch(`https://localhost:5001/Search/GetCoursesSearchResult?input=${filteredInput}`)
+                    .then((response) => { return response.text(); })
+                    .then((result) => {
+
+                        $('#courses-matches').html(result);
+                    });
+            }
+        });
+    }
+/*------------------------------------
+    Courses Search
+--------------------------------------*/
+
+    let detailInput = document.getElementById("detail-search")
+
+    if (detailInput != null) {
+        let detailMatches = document.getElementById("detail-matches")
+
+        detailInput.addEventListener('keyup', () => {
+            $('#detail-matches').empty();
+            let filteredInput = detailInput.value.trim();
+
+            if (filteredInput == "") {
+                $('#detail-matches').empty();
+            }
+            else {
+                fetch(`https://localhost:5001/Search/GetGlobalSearchResult?input=${filteredInput}`)
+                    .then((response) => { return response.text(); })
+                    .then((result) => {
+
+                        $('#detail-matches').html(result);
+                    });
+            }
+        });
+    }
 
 
 /*------------------------------------

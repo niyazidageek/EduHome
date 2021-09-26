@@ -1,0 +1,33 @@
+﻿@using EduHome.Models
+@model SearchVM
+
+<div style="display:flex; flex-direction:column; text-align:start">
+    @if (Model.Teachers.Count != 0 || Model.Events.Count != 0 || Model.Blogs.Count != 0 || Model.Courses.Count != 0)
+    {
+        @foreach (var teacher in Model.Teachers)
+        {
+            <a asp-controller="Teacher" asp-action="TeacherDetail" asp-route-id="@teacher.Id">@teacher.FullName</a>
+        }
+
+        @foreach (var _event in Model.Events)
+        {
+            <a asp-controller="Event" asp-action="EventDetail" asp-route-id="@_event.Id">@_event.Name</a>
+        }
+
+        @foreach (var blog in Model.Blogs)
+        {
+            <a asp-controller="Blog" asp-action="BlogDetail" asp-route-id="@blog.Id">@blog.Name</a>
+        }
+
+        @foreach (var course in Model.Courses)
+        {
+            <a asp-controller="Course" asp-action="CourseDetail" asp-route-id="@course.Id">@course.Name</a>
+        }
+    }
+
+    else
+    {
+        <span>No mathces.</span>
+    }
+
+</div>

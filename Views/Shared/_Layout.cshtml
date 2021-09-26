@@ -66,7 +66,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="logo">
-                            <a href="index.html"><img src="~/img/logo/logo2.png" alt="eduhome" /></a>
+                            <a asp-controller="Home" asp-action="Index"><img src="~/img/logo/logo2.png" alt="eduhome" /></a>
                         </div>
                     </div>
                     <div class="col-md-9 col-sm-9 col-xs-6">
@@ -104,14 +104,13 @@
                                 </ul>
                                 <div class="search">
                                     <div class="search-form">
-                                        <form id="search-form" action="#">
+                                        <form id="search-form">
                                             <input id="global-search" type="search" placeholder="Search here..." name="search" />
-                                            <button type="submit">
+                                            <button>
                                                 <span><i class="fa fa-search"></i></span>
                                             </button>
                                         </form>
-                                        <div id="matches" style="background:white; display:flex; justify-content:start">
-                                            <span>Nothing to search</span>
+                                        <div id="matches" style="background:white;">
                                         </div>
                                     </div>
                                 </div>
@@ -138,7 +137,7 @@
                     <div class="col-md-4 col-sm-6 col-xs-12">
                         <div class="single-widget pr-60">
                             <div class="footer-logo pb-25">
-                                <a href="index.html"><img src="~/img/logo/footer-logo.png" alt="eduhome"></a>
+                                <a asp-controller="Home" asp-action="Index"><img src="~/img/logo/footer-logo.png" alt="eduhome"></a>
                             </div>
                             <p>I must explain to you how all this mistaken idea of denoung pleure and praising pain was born and give you a coete account of the system. </p>
                             <div class="footer-social">
@@ -155,11 +154,11 @@
                         <div class="single-widget">
                             <h3>information</h3>
                             <ul>
-                                <li><a href="#">addmission</a></li>
-                                <li><a href="#">Academic Calender</a></li>
-                                <li><a href="event.html">Event List</a></li>
-                                <li><a href="#">Hostel &amp; Dinning</a></li>
-                                <li><a href="#">TimeTable</a></li>
+                                <li><a>addmission</a></li>
+                                <li><a>Academic Calender</a></li>
+                                <li><a asp-controller="Event" asp-action="Index">Event List</a></li>
+                                <li><a>Hostel &amp; Dinning</a></li>
+                                <li><a>TimeTable</a></li>
                             </ul>
                         </div>
                     </div>
@@ -182,22 +181,22 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <p>Copyright © <a href="#" target="_blank">HasTech</a> 2017. All Right Reserved By Hastech.</p>
+                        <p>Copyright © <a>HasTech</a> 2017. All Right Reserved By Hastech.</p>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="js/vendor/jquery-1.12.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.meanmenu.js"></script>
-    <script src="js/jquery.magnific-popup.js"></script>
-    <script src="js/ajax-mail.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.mb.YTPlayer.js"></script>
-    <script src="js/jquery.nicescroll.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="~/js/vendor/jquery-1.12.0.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery.meanmenu.js"></script>
+    <script src="~/js/jquery.magnific-popup.js"></script>
+    <script src="~/js/ajax-mail.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/jquery.mb.YTPlayer.js"></script>
+    <script src="~/js/jquery.nicescroll.min.js"></script>
+    <script src="~/js/plugins.js"></script>
+    <script src="~/js/main.js"></script>
 </body>
 </html>
